@@ -10,8 +10,6 @@ import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.wwqk.constants.InjuryTypeEnum;
-
 /**
  * 常用Id
  * @author Administrator
@@ -56,15 +54,6 @@ public class CommonUtils {
 		MONTH_TEN_MAP.put("十月", "10");
 	}
 	
-	public static String getCNInjury(String injuryStr){
-		for(InjuryTypeEnum typeEnum : InjuryTypeEnum.values()){
-			if(typeEnum.getKey().equals(injuryStr)){
-				return typeEnum.getValue();
-			}
-		}
-		return injuryStr;
-	}
-
 	/**
 	 * 得到Id
 	 * @param url /teams/england/aston-villa-football-club/665/
