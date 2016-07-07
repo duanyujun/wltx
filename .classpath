@@ -28,5 +28,7 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/shiro-ehcache-1.2.6.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/shiro-web-1.2.6.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/commons-beanutils-1.8.3.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/druid-0.2.26.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jstl.jar"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>
