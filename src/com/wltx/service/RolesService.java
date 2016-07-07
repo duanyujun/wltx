@@ -6,9 +6,9 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import com.jfinal.plugin.activerecord.Db;
-import com.leon.model.Roles;
-import com.leon.model.RolesPermissions;
-import com.leon.model.Users;
+import com.wltx.model.Roles;
+import com.wltx.model.RolesPermissions;
+import com.wltx.model.Users;
 
 /**
  * @author java 用户service
@@ -28,7 +28,7 @@ public class RolesService extends Service<Roles> {
 	 * @return
 	 */
 	public List<Roles> getRoleList(Users user) {
-		return this.findAll("SELECT r.* FROM roles r LEFT JOIN `user_roles` ur on ur.role_id=r.id where ur.user_id=?", user.getId());
+		return this.findAll("SELECT r.* FROM roles r LEFT JOIN `user_roles` ur on ur.role_id=r.id where ur.user_id=?", user.get("id"));
 	}
 
 	/**
@@ -38,7 +38,7 @@ public class RolesService extends Service<Roles> {
 	 * @return
 	 */
 	public List<String> getRoleNameList(Users user) {
-		return Db.query("SELECT r.role_name FROM roles r LEFT JOIN `user_roles` ur on ur.role_id=r.id where ur.user_id=?", user.getId());
+		return Db.query("SELECT r.role_name FROM roles r LEFT JOIN `user_roles` ur on ur.role_id=r.id where ur.user_id=?", user.get("id"));
 	}
 
 	/**

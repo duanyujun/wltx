@@ -1,6 +1,7 @@
 package com.wltx.service;
 
-import com.leon.model.UsersRoles;
+import com.wltx.model.UsersRoles;
+
 
 /**
  * @author java 权限service

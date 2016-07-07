@@ -4,14 +4,14 @@ import java.util.List;
 
 import com.jfinal.aop.Before;
 import com.jfinal.plugin.activerecord.Model;
-import com.jfinal.plugin.activerecord.TableInfo;
-import com.jfinal.plugin.activerecord.TableInfoMapping;
+import com.jfinal.plugin.activerecord.Table;
+import com.jfinal.plugin.activerecord.TableMapping;
 import com.jfinal.plugin.activerecord.tx.Tx;
 
 public abstract class Service<M extends Model<M>> {
 
 	public M model = null;
-	public TableInfo table = null;
+	public Table table = null;
 	public String tableName = null;
 
 	public Service() {
@@ -20,9 +20,9 @@ public abstract class Service<M extends Model<M>> {
 	public Service(M dao) {
 		model = dao;
 
-		table = TableInfoMapping.me().getTableInfo(model.getClass());
+		table = TableMapping.me().getTable(model.getClass());
 
-		tableName = table.getTableName();
+		tableName = table.getName();
 	}
 
 	/**
@@ -31,7 +31,7 @@ public abstract class Service<M extends Model<M>> {
 	 * @return
 	 */
 	public List<M> findAll() {
-		return model.find("select * from " + table.getTableName());
+		return model.find("select * from " + table.getName());
 	}
 
 	public M find(Object id) {
@@ -39,11 +39,11 @@ public abstract class Service<M extends Model<M>> {
 	}
 
 	public List<M> findByPropertity(String propertity, Object value) {
-		return model.find("select * from " + table.getTableName() + " where " + propertity + " = ? ", value);
+		return model.find("select * from " + table.getName() + " where " + propertity + " = ? ", value);
 	}
 
 	public M findFirstByPropertity(String propertity, Object value) {
-		return (M) model.findFirst("select * from " + table.getTableName() + " where " + propertity + " = ? ", value);
+		return (M) model.findFirst("select * from " + table.getName() + " where " + propertity + " = ? ", value);
 	}
 
 	public boolean save(M record) {
@@ -75,7 +75,7 @@ public abstract class Service<M extends Model<M>> {
 		return record.update();
 	}
 
-	public TableInfo getTableInfo() {
+	public Table getTableInfo() {
 		return table;
 	}
 

@@ -1,6 +1,7 @@
 package com.wltx.service;
 
-import java.security.Permissions;
+import com.wltx.model.Permissions;
+
 
 /**
  * @author java 权限service
