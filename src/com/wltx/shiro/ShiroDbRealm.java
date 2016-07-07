@@ -15,7 +15,9 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.SimplePrincipalCollection;
 
-import com.wltx.model.User;
+import com.wltx.model.Roles;
+import com.wltx.model.Users;
+import com.wltx.service.RolesService;
 
 /**
  * @author java 动态权限的核心处理方法
@@ -32,7 +34,7 @@ public class ShiroDbRealm extends AuthorizingRealm {
 		 */
 		UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
 		String userName = token.getUsername();
-		User user = User.dao.findFirst("select * from user where username = ? ", userName);
+		Users user = Users.dao.findFirst("select * from user where username = ? ", userName);
 		if (user != null) {
 			return new SimpleAuthenticationInfo(user.get("username"), user.get("password"), getName());
 		} else {
@@ -46,7 +48,7 @@ public class ShiroDbRealm extends AuthorizingRealm {
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
 		String userName = (String) principals.fromRealm(getName()).iterator().next();
 		/** 动态设置用户的角色，和角色对应的权限 */
-		User user = User.dao.findFirst("select * from user where username = ? ", userName);
+		Users user = Users.dao.findFirst("select * from user where username = ? ", userName);
 		if (user != null) {
 			SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
 			List<String> roleNameList = RolesService.service.getRoleNameList(user);
