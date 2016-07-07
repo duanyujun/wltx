@@ -13,7 +13,7 @@ import com.jfinal.plugin.c3p0.C3p0Plugin;
 import com.jfinal.render.ViewType;
 import com.wltx.controller.IndexController;
 import com.wltx.controller.UserController;
-import com.wltx.model.User;
+import com.wltx.model.Users;
 
 
 public class MainConfig extends JFinalConfig {
@@ -39,7 +39,7 @@ public class MainConfig extends JFinalConfig {
 		ActiveRecordPlugin arp = new ActiveRecordPlugin(c3p0Plugin);
 		arp.setShowSql(true);
 		
-		arp.addMapping("user", User.class);
+		arp.addMapping("users", Users.class);
 		
 		me.add(c3p0Plugin);
 		me.add(arp);
