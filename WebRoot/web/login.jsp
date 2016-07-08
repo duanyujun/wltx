@@ -2,10 +2,10 @@
  
 <%@include file="/common/include.jsp" %>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE>
 <html>
 <head>
-<title>管理系统</title>
+<title>监控系统</title>
 
 <style type="text/css">
 	.clear{ clear: both;}

@@ -8,11 +8,17 @@ import com.jfinal.config.JFinalConfig;
 import com.jfinal.config.Plugins;
 import com.jfinal.config.Routes;
 import com.jfinal.core.JFinal;
+import com.jfinal.ext.plugin.shiro.ShiroInterceptor;
+import com.jfinal.ext.plugin.shiro.ShiroKit;
+import com.jfinal.ext.plugin.shiro.ShiroPlugin;
 import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.druid.DruidPlugin;
+import com.jfinal.plugin.ehcache.EhCachePlugin;
 import com.jfinal.render.ViewType;
+import com.wltx.controller.HomeController;
 import com.wltx.controller.IndexController;
+import com.wltx.controller.LoginController;
 import com.wltx.controller.UserController;
 import com.wltx.model.Permissions;
 import com.wltx.model.Roles;
@@ -22,19 +28,33 @@ import com.wltx.model.UsersRoles;
 
 
 public class MainConfig extends JFinalConfig {
+	
+	private Routes routes;
 
 	@Override
 	public void configConstant(Constants me) {
 		// TODO Auto-generated method stub
 		me.setViewType(ViewType.JSP);
 		PropKit.use("config.properties");
+		me.setDevMode(true);
+		
+		me.setErrorView(401, "/web/error.jsp");
+		me.setErrorView(403, "/web/error.jsp");
+		me.setError404View("/web/error.jsp");
+		me.setError500View("/web/error.jsp");
+		
+		ShiroKit.setLoginUrl("/web/login.jsp");
+		ShiroKit.setUnauthorizedUrl("/web/error.jsp");
 	}
 
 	@Override
 	public void configRoute(Routes me) {
-		// TODO Auto-generated method stub
-		me.add("/", IndexController.class);
-		me.add("/user", UserController.class);
+		this.routes = me;
+		
+		me.add("/", LoginController.class, "web");
+		me.add("/home", HomeController.class, "web");
+		
+		//me.add("/user", UserController.class);
 	}
 
 	@Override
@@ -60,12 +80,18 @@ public class MainConfig extends JFinalConfig {
 		arp.addMapping("roles_permissions", RolesPermissions.class);
 		
 		me.add(arp);
+		
+		// 缓存插件
+		me.add(new EhCachePlugin());
+		
+		// 加载Shiro插件
+		ShiroPlugin shiroPlugin = new ShiroPlugin(routes);
+		me.add(shiroPlugin);
 	}
 
 	@Override
 	public void configInterceptor(Interceptors me) {
-		// TODO Auto-generated method stub
-
+		me.add(new ShiroInterceptor());
 	}
 
 	@Override
@@ -75,7 +101,7 @@ public class MainConfig extends JFinalConfig {
 	}
 	
 	public static void main(String[] args) {
-		JFinal.start("WebRoot", 80, "/", 5);
+		JFinal.start("WebRoot", 99, "/", 5);
 	}
 
 }
