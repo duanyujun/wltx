@@ -15,7 +15,7 @@ import com.wltx.model.Users;
  */
 public class RolesService extends Service<Roles> {
 
-	public static RolesService service = new RolesService(Roles.dao);
+	public RolesService service = new RolesService(Roles.dao);
 
 	public RolesService(Roles dao) {
 		super(dao);

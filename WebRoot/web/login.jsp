@@ -1,77 +1,141 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
- 
-<%@include file="/common/include.jsp" %>
+<%@ include file="/common/include.jsp"%>
+<%@ page contentType="text/html;charset=UTF-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+%>
+<!DOCTYPE html>
 
-<!DOCTYPE>
-<html>
-<head>
-<title>监控系统</title>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+    <!--<![endif]-->
+    <!-- BEGIN HEAD -->
+    <head>
+    	<base href="<%=basePath%>">
+        <meta charset="utf-8" />
+        <title>用户登录</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta content="" name="description" />
+        <meta content="" name="author" />
+        <!-- BEGIN GLOBAL MANDATORY STYLES -->
+        <link href="http://fonts.useso.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+        <link href="${ctx}/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link href="${ctx}/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="${ctx}/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="${ctx}/assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css" />
+        <link href="${ctx}/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+        <!-- END GLOBAL MANDATORY STYLES -->
+        <!-- BEGIN PAGE LEVEL PLUGINS -->
+        <link href="${ctx}/assets/global/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+        <link href="${ctx}/assets/global/plugins/select2/css/select2-bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <!-- END PAGE LEVEL PLUGINS -->
+        <!-- BEGIN THEME GLOBAL STYLES -->
+        <link href="${ctx}/assets/global/css/components-md.min.css" rel="stylesheet" id="style_components" type="text/css" />
+        <link href="${ctx}/assets/global/css/plugins-md.min.css" rel="stylesheet" type="text/css" />
+        <!-- END THEME GLOBAL STYLES -->
+        <!-- BEGIN PAGE LEVEL STYLES -->
+        <link href="${ctx}/assets/pages/css/login-4.min.css" rel="stylesheet" type="text/css" />
+        <!-- END PAGE LEVEL STYLES -->
+        <!-- BEGIN THEME LAYOUT STYLES -->
+        <!-- END THEME LAYOUT STYLES -->
+        <link rel="shortcut icon" href="favicon.ico" /> </head>
+    <!-- END HEAD -->
 
-<style type="text/css">
-	.clear{ clear: both;}
-	*{padding: 0px; margin: 0px;}
-	 input:focus{outline: none;}
-	 a{text-decoration: none;}
-	 ul,li{ padding: 0px; margin: 0px; list-style: none;}
-	 html{width: 100%; height: 100%; background: url(${ctx}/assets/images/login_background.png) center no-repeat; overflow: hidden;}
-	.container{width: 834px; height: 100%; margin: 0 auto; overflow: hidden;display: table;}
-	.system_name{margin-top: 50px;width: 100%; height: auto; padding: 0px 0px 70px 0px; text-align: center; color:#42C3B3; font-size: 36px; font-family: "微软雅黑"; letter-spacing: 4px; overflow: hidden;}
-	.login_box{width: auto; height: auto; padding:0px 72px; overflow: hidden;display: table-cell;vertical-align: middle;}
-	.box_left{float: left;}
-	.box_right{ margin:0 auto; width: 370px; height:255px; padding:30px 30px 15px 30px; background: white; overflow: hidden;}
-	.right_title{padding-bottom: 20px; color: #42C3B3; font-size: 24px; font-family:"微软雅黑";}
-	.right_title span{padding-left: 6px; color: #B4C2BF; font-size: 14px;}
-	.user_name,.password{height: 40px; margin-bottom: 14px; border-radius:6px; background: #E8F2F0;}
-	.user_name input,.password input{width: 308px; height:40px; border: none; background: transparent; font-size: 14px;}
-	.user_name input::-webkit-input-placeholder,.password input::-webkit-input-placeholder{ color: #B4C2BF; font-family: "微软雅黑";}
-	.user_name span{background: url(${ctx}/assets/images/icon_user.png) center no-repeat;}
-	.password span{background: url(${ctx}/assets/images/icon_password.png) center no-repeat;}
-	.user_name span,.password span{ float: left; display: inline-block; width: 62px; height: 40px;}
-	.submit_box{padding: 22px 0px 20px 0px;}
-	.submit_box input{width: 175px; height: 40px; line-height: 40px; color: white; border: none; border-radius: 4px; font-size: 16px; font-family: "微软雅黑"; letter-spacing: 4px; cursor: pointer; overflow: hidden;}
-	.submit_box input[type=reset]{float: left; background: #42C3B3;}
-	.submit_box input[type=submit]{float: right; background: #D9534F;}
-	.wj_pwd{text-align: right; color: #6C7D7A; font-size: 14px; font-family: "微软雅黑";}
-	.wj_pwd a{color: #428BCA; text-decoration: underline;}
-	.footer_fun_box{padding-top: 66px; text-align: center;font-family: "微软雅黑";}
-	.footer_fun_box li{float: left; margin-right:6px; font-size: 14px; font-family: "微软雅黑";}
-	.footer_fun_box a{display: inline-block; padding: 6px 6px 6px 26px; color: white; border-radius: 3px; background:url(${ctx}/resources/images/login/icon_list.png) 10px center no-repeat rgba(0,0,0,0.2); overflow: hidden;}
-</style>
+    <body class=" login">
+        <!-- BEGIN LOGO -->
+        <div class="logo">
+            <a href="index.html">
+                <img src="${ctx}/assets/pages/img/logo-big.png" alt="" /> </a>
+        </div>
+        <!-- END LOGO -->
+        <!-- BEGIN LOGIN -->
+        <div class="content">
+            <!-- BEGIN LOGIN FORM -->
+            <form class="login-form" action="${ctx}/login" method="post">
+                <h3 class="form-title">登 录 系 统</h3>
+                <div class="alert alert-danger display-hide">
+                    <button class="close" data-close="alert"></button>
+                    <span> Enter any username and password. </span>
+                </div>
+                <div class="form-group">
+                    <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+                    <label class="control-label visible-ie8 visible-ie9">Username</label>
+                    <div class="input-icon">
+                        <i class="fa fa-user"></i>
+                        <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="用户名" name="username" /> </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label visible-ie8 visible-ie9">Password</label>
+                    <div class="input-icon">
+                        <i class="fa fa-lock"></i>
+                        <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="密码" name="password" /> </div>
+                </div>
+                <div class="form-actions">
+                    <label class="checkbox">
+                        <input type="checkbox" name="remember" value="1" /> 记住我 </label>
+                    <button type="submit" class="btn green pull-right"> 登 录 </button>
+                </div>
+                <div class="forget-password">
+                    <h4>忘记了你的密码?</h4>
+                    <p> 别担心, 点击
+                        <a href="javascript:;" id="forget-password">这里</a>重新设置密码. </p>
+                </div>
+            </form>
+            <!-- END LOGIN FORM -->
+            <!-- BEGIN FORGOT PASSWORD FORM -->
+            <form class="forget-form" action="index.html" method="post">
+                <h3>Forget Password ?</h3>
+                <p> Enter your e-mail address below to reset your password. </p>
+                <div class="form-group">
+                    <div class="input-icon">
+                        <i class="fa fa-envelope"></i>
+                        <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Email" name="email" /> </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" id="back-btn" class="btn red btn-outline">Back </button>
+                    <button type="submit" class="btn green pull-right"> Submit </button>
+                </div>
+            </form>
+            <!-- END FORGOT PASSWORD FORM -->
+            <!-- BEGIN REGISTRATION FORM -->
+            
+            <!-- END REGISTRATION FORM -->
+        </div>
+        <!-- END LOGIN -->
+        <!-- BEGIN COPYRIGHT -->
+        <div class="copyright"> 2016 &copy; Metronic - Admin Dashboard Template. </div>
+        <!-- END COPYRIGHT -->
+        <!--[if lt IE 9]>
+<script src="${ctx}/assets/global/plugins/respond.min.js"></script>
+<script src="${ctx}/assets/global/plugins/excanvas.min.js"></script> 
+<![endif]-->
+        <!-- BEGIN CORE PLUGINS -->
+        <script src="${ctx}/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+        <script src="${ctx}/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="${ctx}/assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
+        <script src="${ctx}/assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+        <script src="${ctx}/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+        <script src="${ctx}/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+        <script src="${ctx}/assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+        <script src="${ctx}/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+        <!-- END CORE PLUGINS -->
+        <!-- BEGIN PAGE LEVEL PLUGINS -->
+        <script src="${ctx}/assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+        <script src="${ctx}/assets/global/plugins/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
+        <script src="${ctx}/assets/global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
+        <script src="${ctx}/assets/global/plugins/backstretch/jquery.backstretch.min.js" type="text/javascript"></script>
+        <!-- END PAGE LEVEL PLUGINS -->
+        <!-- BEGIN THEME GLOBAL SCRIPTS -->
+        <script src="${ctx}/assets/global/scripts/app.min.js" type="text/javascript"></script>
+        <!-- END THEME GLOBAL SCRIPTS -->
+        <!-- BEGIN PAGE LEVEL SCRIPTS -->
+        <script src="${ctx}/assets/pages/scripts/login-4.min.js" type="text/javascript"></script>
+        <!-- END PAGE LEVEL SCRIPTS -->
+        <!-- BEGIN THEME LAYOUT SCRIPTS -->
+        <!-- END THEME LAYOUT SCRIPTS -->
+    </body>
 
-<script src="${ctx}/assets/dwz/js/jquery-2.1.4.min.js" type="text/javascript"></script>
-
-</head>
-<body style="height:100%;">
-	<div class="container" id="container">
-			<div class="login_box">
-				<div class="from_box">
-					<div class="box_left"></div>
-					<div class="box_right">
-						<form action="${ctx}/login" method="post" >
-							<div class="right_title">用户登录<span>USER LOGIN</span></div>
-							<div class="input_box">
-								<div class="user_name"><span></span>
-									<input type="text" name="username" value="" placeholder="请输入用户民">
-								</div>
-								<div class="password"><span></span>
-									<input type="password" name="password" value="" placeholder="请输入密码">
-								</div>
-								<div class="submit_box">
-									<input class="red" type="reset" name="" value="重置" />
-									<input class="blue" type="submit" name="" value="登录" />
-									<div class="clear"></div>
-								</div>
-								<div class="wj_pwd">
-									<c:if test="${not empty error}">
-										<span style="color: red;">${error}</span>	
-									</c:if>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-
-</body>
 </html>

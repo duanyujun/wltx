@@ -1,5 +1,6 @@
 package com.wltx.shiro;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -17,7 +18,6 @@ import org.apache.shiro.subject.SimplePrincipalCollection;
 
 import com.wltx.model.Roles;
 import com.wltx.model.Users;
-import com.wltx.service.RolesService;
 
 /**
  * @author java 动态权限的核心处理方法
@@ -34,7 +34,7 @@ public class ShiroDbRealm extends AuthorizingRealm {
 		 */
 		UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
 		String userName = token.getUsername();
-		Users user = Users.dao.findFirst("select * from user where username = ? ", userName);
+		Users user = Users.dao.findFirst("select * from users where username = ? ", userName);
 		if (user != null) {
 			return new SimpleAuthenticationInfo(user.get("username"), user.get("password"), getName());
 		} else {
@@ -48,13 +48,16 @@ public class ShiroDbRealm extends AuthorizingRealm {
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
 		String userName = (String) principals.fromRealm(getName()).iterator().next();
 		/** 动态设置用户的角色，和角色对应的权限 */
-		Users user = Users.dao.findFirst("select * from user where username = ? ", userName);
+		Users user = Users.dao.findFirst("select * from users where username = ? ", userName);
 		if (user != null) {
 			SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
-			List<String> roleNameList = RolesService.service.getRoleNameList(user);
+			List<Roles> roleList = Roles.dao.find("SELECT r.* FROM roles r LEFT JOIN `user_roles` ur on ur.role_id=r.id where ur.user_id=?", user.get("id"));
+			
+			List<String> roleNameList = new ArrayList<String>();
+			for(Roles roles : roleList){
+				roleNameList.add(roles.getStr("role_name"));
+			}
 			info.addRoles(roleNameList); // 用户有哪些role
-
-			List<Roles> roleList = RolesService.service.getRoleList(user);
 
 			for (Roles role : roleList) { // 每个role有哪些权限
 				Collection<String> per = role.getPermissionNameList();

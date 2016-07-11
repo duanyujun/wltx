@@ -9,7 +9,6 @@ import com.jfinal.config.Plugins;
 import com.jfinal.config.Routes;
 import com.jfinal.core.JFinal;
 import com.jfinal.ext.plugin.shiro.ShiroInterceptor;
-import com.jfinal.ext.plugin.shiro.ShiroKit;
 import com.jfinal.ext.plugin.shiro.ShiroPlugin;
 import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
@@ -17,9 +16,7 @@ import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.plugin.ehcache.EhCachePlugin;
 import com.jfinal.render.ViewType;
 import com.wltx.controller.HomeController;
-import com.wltx.controller.IndexController;
 import com.wltx.controller.LoginController;
-import com.wltx.controller.UserController;
 import com.wltx.model.Permissions;
 import com.wltx.model.Roles;
 import com.wltx.model.RolesPermissions;
@@ -43,8 +40,6 @@ public class MainConfig extends JFinalConfig {
 		me.setError404View("/web/error.jsp");
 		me.setError500View("/web/error.jsp");
 		
-		ShiroKit.setLoginUrl("/web/login.jsp");
-		ShiroKit.setUnauthorizedUrl("/web/error.jsp");
 	}
 
 	@Override
@@ -86,6 +81,9 @@ public class MainConfig extends JFinalConfig {
 		
 		// 加载Shiro插件
 		ShiroPlugin shiroPlugin = new ShiroPlugin(routes);
+		shiroPlugin.setLoginUrl("/web/login.jsp");
+		shiroPlugin.setUnauthorizedUrl("/web/error.jsp");
+		shiroPlugin.setSuccessUrl("/web/monitor/allMonitors.jsp");
 		me.add(shiroPlugin);
 	}
 
