@@ -170,7 +170,7 @@
             </div>
             <div class="page-content-wrapper">
                 <div class="page-content">
-                    <div class="page-head" >
+                    <div class="page-head" style="display:none;">
                         <div class="page-title">
                             <h1>Color Library</h1>
                         </div>
