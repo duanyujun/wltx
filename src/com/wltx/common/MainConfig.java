@@ -18,6 +18,7 @@ import com.jfinal.render.ViewType;
 import com.wltx.controller.HomeController;
 import com.wltx.controller.LoginController;
 import com.wltx.controller.MonitorController;
+import com.wltx.controller.UserController;
 import com.wltx.model.Permissions;
 import com.wltx.model.Roles;
 import com.wltx.model.RolesPermissions;
@@ -50,8 +51,7 @@ public class MainConfig extends JFinalConfig {
 		me.add("/", LoginController.class, "web");
 		me.add("/home", HomeController.class, "web");
 		me.add("/monitor", MonitorController.class, "web");
-		
-		//me.add("/user", UserController.class);
+		me.add("/user", UserController.class, "web");
 	}
 
 	@Override

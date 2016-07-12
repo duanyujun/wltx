@@ -157,7 +157,7 @@
                                 </li>
                                 
                                 <li class="nav-item  ">
-                                    <a href="/monitor" class="nav-link ">
+                                    <a href="/user" class="nav-link ">
                                         <span class="title">人员管理</span>
                                     </a>
                                 </li>

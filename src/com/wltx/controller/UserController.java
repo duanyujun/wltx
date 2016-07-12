@@ -8,10 +8,10 @@ import com.wltx.model.Users;
 public class UserController extends Controller {
 
 	public void index(){
-		List<Users> users = Users.dao.find("select * from user");
+		List<Users> users = Users.dao.find("select * from users");
 		setAttr("users", users);
 		System.err.println(users.size());
-		render("list.jsp");
+		render("user/userList.jsp");
 	}
 	
 	public void form(){
