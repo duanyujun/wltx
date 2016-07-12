@@ -10,7 +10,7 @@ public class HomeController extends Controller {
 	@RequiresRoles(value = { "user", "admin" }, logical = Logical.OR)
 	public void index() {
 
-		render("monitor/allMonitors.jsp");
+		render("home.jsp");
 	}
 	
 }

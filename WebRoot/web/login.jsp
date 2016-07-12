@@ -13,7 +13,6 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     <!--<![endif]-->
     <!-- BEGIN HEAD -->
     <head>
-    	<base href="<%=basePath%>">
         <meta charset="utf-8" />
         <title>用户登录</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
