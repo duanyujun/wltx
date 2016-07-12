@@ -141,43 +141,117 @@
                     <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
                     <ul class="page-sidebar-menu   " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
                         
-                        <li class="heading">
-                            <h3 class="uppercase">Features</h3>
-                        </li>
-                        <li class="nav-item  active open">
+                        
+                        <li class="nav-model nav-item">
                             <a href="javascript:;" class="nav-link nav-toggle">
                                 <i class="icon-settings"></i>
-                                <span class="title">UI Features</span>
+                                <span class="title">功能</span>
                                 <span class="selected"></span>
                                 <span class="arrow open"></span>
                             </a>
                             <ul class="sub-menu">
-                                <li class="nav-item  active open">
-                                    <a href="ui_colors.html" class="nav-link ">
-                                        <span class="title">Color Library</span>
+                                <li class="nav-item">
+                                    <a href="/monitor" class="nav-link ">
+                                        <span class="title">表格监控</span>
                                         <span class="selected"></span>
                                     </a>
                                 </li>
                                 <li class="nav-item  ">
-                                    <a href="ui_general.html" class="nav-link ">
-                                        <span class="title">General Components</span>
+                                    <a href="/monitor" class="nav-link ">
+                                        <span class="title">地图监控</span>
                                     </a>
                                 </li>
                                 <li class="nav-item  ">
-                                    <a href="ui_buttons.html" class="nav-link ">
-                                        <span class="title">Buttons</span>
+                                    <a href="/monitor" class="nav-link ">
+                                        <span class="title">数据管理</span>
                                     </a>
                                 </li>
                                 
                                 <li class="nav-item  ">
-                                    <a href="ui_nestable.html" class="nav-link ">
-                                        <span class="title">Nestable List</span>
+                                    <a href="/monitor" class="nav-link ">
+                                        <span class="title">数据统计</span>
+                                    </a>
+                                </li>
+                                
+                                <li class="nav-item  ">
+                                    <a href="/monitor" class="nav-link ">
+                                        <span class="title">实时数据</span>
+                                    </a>
+                                </li>
+                                
+                                <li class="nav-item  ">
+                                    <a href="/monitor" class="nav-link ">
+                                        <span class="title">历史数据</span>
                                     </a>
                                 </li>
                             </ul>
                         </li>
                         
+                        <li class="nav-model nav-item">
+                            <a href="javascript:;" class="nav-link nav-toggle">
+                                <i class="icon-settings"></i>
+                                <span class="title">特色</span>
+                                <span class="selected"></span>
+                                <span class="arrow open"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item  ">
+                                    <a href="/monitor" class="nav-link ">
+                                        <span class="title">实时数据</span>
+                                    </a>
+                                </li>
+                                
+                                <li class="nav-item  ">
+                                    <a href="/monitor" class="nav-link ">
+                                        <span class="title">历史数据</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                         
+                        <li class="nav-model nav-item">
+                            <a href="javascript:;" class="nav-link nav-toggle">
+                                <i class="icon-settings"></i>
+                                <span class="title">特色1</span>
+                                <span class="selected"></span>
+                                <span class="arrow open"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item  ">
+                                    <a href="/monitor" class="nav-link ">
+                                        <span class="title">实时数据</span>
+                                    </a>
+                                </li>
+                                
+                                <li class="nav-item  ">
+                                    <a href="/monitor" class="nav-link ">
+                                        <span class="title">历史数据</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        
+                        <li class="nav-model nav-item">
+                            <a href="javascript:;" class="nav-link nav-toggle">
+                                <i class="icon-settings"></i>
+                                <span class="title">特色2</span>
+                                <span class="selected"></span>
+                                <span class="arrow open"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item  ">
+                                    <a href="/monitor" class="nav-link ">
+                                        <span class="title">实时数据</span>
+                                    </a>
+                                </li>
+                                
+                                <li class="nav-item  ">
+                                    <a href="/monitor" class="nav-link ">
+                                        <span class="title">历史数据</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                         
                         
                     </ul>
@@ -191,7 +265,7 @@
                 <!-- BEGIN CONTENT BODY -->
                 <div class="page-content">
                     <!-- BEGIN PAGE HEAD-->
-                    <div class="page-head">
+                    <div class="page-head" style="display:none;">
                         <!-- BEGIN PAGE TITLE -->
                         <div class="page-title">
                             <h1>Color Library
@@ -285,7 +359,7 @@
                     <!-- BEGIN PAGE BREADCRUMB -->
                     <ul class="page-breadcrumb breadcrumb">
                         <li>
-                            <a href="index.html">Home</a>
+                            <a href="/home">主页</a>
                             <i class="fa fa-circle"></i>
                         </li>
                         <li>
@@ -295,14 +369,8 @@
                     <!-- END PAGE BREADCRUMB -->
                     <!-- BEGIN PAGE BASE CONTENT -->
                     <div class="row">
-                        <div class="col-md-12">
-                            <div class="note note-info">
-                                <h4 class="block">UI Collor Collection</h4>
-                                <p> Just apply the color class(e.g: <code>.blue-madison</code>) to Metronic portlets, buttons, statistic blocks, tiles and other containers. </p>
-                            </div>
-                            <div class="row">
-                           
-                            </div>
+                        <div id="main-content" class="col-md-12">
+                            
                         </div>
                     </div>
                     <!-- END PAGE BASE CONTENT -->
@@ -348,5 +416,38 @@
         <script src="${ctx}/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
         <!-- END THEME LAYOUT SCRIPTS -->
     </body>
+
+<script type="text/javascript">
+$(function(){  
+	init();
+});
+
+function init(){
+	$('.sub-menu li a').click(function(e) {
+        e.preventDefault();
+        var url = this.href;
+        if (url != null && url != 'javascript:;') {
+        
+        	$(".nav-model").removeClass("active");
+        	$(".nav-model").removeClass("open");
+        	
+        	var subLi = $(".sub-menu li");
+        	subLi.removeClass("active");
+        	subLi.removeClass("open");
+        	
+        	var modelItem = $(this).parent().parent().parent();
+        	modelItem.addClass("active");
+        	modelItem.addClass("open");
+        	
+        	$(this).parent().addClass("active");
+        	$(this).parent().addClass("open");
+        
+        	
+        	$('#main-content').load(url);
+        }
+    });
+}
+
+</script>
 
 </html>
