@@ -72,7 +72,7 @@ $(document).ready(function() {
             "orderable": !1,
             "searchable": !1,
             "render": function ( data, type, full, meta ) {
-                return '<input type="checkbox" />';
+                return '<input type="checkbox" data-id='+data[0]+' />';
               }
         }],
         "ajax": "/user/list"

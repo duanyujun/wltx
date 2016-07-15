@@ -21,7 +21,7 @@ public class UserController extends Controller {
 		Long recordsTotal = Db.queryLong("select count(*) from users");
 		Object[] data = new Object[lstUsers.size()];
 		for(int i=0; i<lstUsers.size(); i++){
-			Object[] obj = new Object[6];
+			Object[] obj = new Object[7];
 			Users users = lstUsers.get(i);
 			obj[0] = users.get("id");
 			obj[1] = users.get("username");
