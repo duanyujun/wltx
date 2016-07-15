@@ -23,14 +23,21 @@
         <link href="${ctx}/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="${ctx}/assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css" />
         <link href="${ctx}/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+        <link href="${ctx}/assets/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
+        <link href="${ctx}/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" />
         <link href="${ctx}/assets/global/css/components-md.min.css" rel="stylesheet" id="style_components" type="text/css" />
         <link href="${ctx}/assets/global/css/plugins-md.min.css" rel="stylesheet" type="text/css" />
         <link href="${ctx}/assets/layouts/layout4/css/layout.min.css" rel="stylesheet" type="text/css" />
         <link href="${ctx}/assets/layouts/layout4/css/themes/light.min.css" rel="stylesheet" type="text/css" id="style_color" />
         <link href="${ctx}/assets/layouts/layout4/css/custom.min.css" rel="stylesheet" type="text/css" />
         <link rel="shortcut icon" href="favicon.ico" /> 
+    	<style type="text/css">
+    		.page-content-wrapper .page-content{padding:0 0 0 20px;}
+    	</style>
+    
     </head>
     <!-- END HEAD -->
+    
 
     <body class="page-container-bg-solid page-header-fixed page-sidebar-closed-hide-logo page-md">
         <div class="page-header navbar navbar-fixed-top">
@@ -170,93 +177,6 @@
             </div>
             <div class="page-content-wrapper">
                 <div class="page-content">
-                    <div class="page-head" style="display:none;">
-                        <div class="page-title">
-                            <h1>Color Library</h1>
-                        </div>
-                        <div class="page-toolbar">
-                            <div class="btn-group btn-theme-panel">
-                                <a href="javascript:;" class="btn dropdown-toggle" data-toggle="dropdown">
-                                    <i class="icon-settings"></i>
-                                </a>
-                                <div class="dropdown-menu theme-panel pull-right dropdown-custom hold-on-click">
-                                    <div class="row">
-                                        <div class="col-md-4 col-sm-4 col-xs-12">
-                                            <h3>THEME</h3>
-                                            <ul class="theme-colors">
-                                                <li class="theme-color theme-color-default" data-theme="default">
-                                                    <span class="theme-color-view"></span>
-                                                    <span class="theme-color-name">Dark Header</span>
-                                                </li>
-                                                <li class="theme-color theme-color-light active" data-theme="light">
-                                                    <span class="theme-color-view"></span>
-                                                    <span class="theme-color-name">Light Header</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-md-8 col-sm-8 col-xs-12 seperator">
-                                            <h3>LAYOUT</h3>
-                                            <ul class="theme-settings">
-                                                <li> Theme Style
-                                                    <select class="layout-style-option form-control input-small input-sm">
-                                                        <option value="square">Square corners</option>
-                                                        <option value="rounded" selected="selected">Rounded corners</option>
-                                                    </select>
-                                                </li>
-                                                <li> Layout
-                                                    <select class="layout-option form-control input-small input-sm">
-                                                        <option value="fluid" selected="selected">Fluid</option>
-                                                        <option value="boxed">Boxed</option>
-                                                    </select>
-                                                </li>
-                                                <li> Header
-                                                    <select class="page-header-option form-control input-small input-sm">
-                                                        <option value="fixed" selected="selected">Fixed</option>
-                                                        <option value="default">Default</option>
-                                                    </select>
-                                                </li>
-                                                <li> Top Dropdowns
-                                                    <select class="page-header-top-dropdown-style-option form-control input-small input-sm">
-                                                        <option value="light">Light</option>
-                                                        <option value="dark" selected="selected">Dark</option>
-                                                    </select>
-                                                </li>
-                                                <li> Sidebar Mode
-                                                    <select class="sidebar-option form-control input-small input-sm">
-                                                        <option value="fixed">Fixed</option>
-                                                        <option value="default" selected="selected">Default</option>
-                                                    </select>
-                                                </li>
-                                                <li> Sidebar Menu
-                                                    <select class="sidebar-menu-option form-control input-small input-sm">
-                                                        <option value="accordion" selected="selected">Accordion</option>
-                                                        <option value="hover">Hover</option>
-                                                    </select>
-                                                </li>
-                                                <li> Sidebar Position
-                                                    <select class="sidebar-pos-option form-control input-small input-sm">
-                                                        <option value="left" selected="selected">Left</option>
-                                                        <option value="right">Right</option>
-                                                    </select>
-                                                </li>
-                                                <li> Footer
-                                                    <select class="page-footer-option form-control input-small input-sm">
-                                                        <option value="fixed">Fixed</option>
-                                                        <option value="default" selected="selected">Default</option>
-                                                    </select>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <ul class="page-breadcrumb breadcrumb" style="display:none;">
-                        <li>
-                        	监控信息一览表
-                        </li>
-                    </ul>
                     <div class="row">
                         <div id="main-content" class="col-md-12">
                             

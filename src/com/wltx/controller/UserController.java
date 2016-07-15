@@ -1,17 +1,45 @@
 package com.wltx.controller;
 
+import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
 import com.jfinal.core.Controller;
+import com.jfinal.plugin.activerecord.Db;
 import com.wltx.model.Users;
 
 public class UserController extends Controller {
 
 	public void index(){
-		List<Users> users = Users.dao.find("select * from users");
-		setAttr("users", users);
-		System.err.println(users.size());
+		//List<Users> users = Users.dao.find("select * from users");
+		//setAttr("users", users);
+		//System.err.println(users.size());
 		render("user/userList.jsp");
+	}
+	
+	public void list(){
+		List<Users> lstUsers = Users.dao.find("select * from users");
+		Long recordsTotal = Db.queryLong("select count(*) from users");
+		Object[] data = new Object[lstUsers.size()];
+		for(int i=0; i<lstUsers.size(); i++){
+			Object[] obj = new Object[6];
+			Users users = lstUsers.get(i);
+			obj[0] = users.get("id");
+			obj[0] = users.get("username");
+			obj[1] = users.get("name");
+			obj[2] = users.get("mobile_no");
+			obj[3] = users.get("qq");
+			obj[4] = users.get("email");
+			obj[5] = users.get("status");
+			data[i] = obj;
+		}
+		
+		Map<Object, Object> map = new HashMap<Object, Object>();
+		map.put("draw", 1);
+		map.put("recordsTotal", recordsTotal);
+		map.put("recordsFiltered", recordsTotal);
+		map.put("data", data);
+		
+		renderJson(map);
 	}
 	
 	public void form(){
