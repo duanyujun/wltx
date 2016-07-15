@@ -67,6 +67,14 @@ $(document).ready(function() {
     $('#sample_1').dataTable( {
         "processing": true,
         "serverSide": true,
+        "columnDefs": [{
+            "targets": 0,
+            "orderable": !1,
+            "searchable": !1,
+            "render": function ( data, type, full, meta ) {
+                return '<input type="checkbox" />';
+              }
+        }],
         "ajax": "/user/list"
     } );
 } );

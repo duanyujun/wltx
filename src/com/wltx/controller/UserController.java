@@ -24,12 +24,12 @@ public class UserController extends Controller {
 			Object[] obj = new Object[6];
 			Users users = lstUsers.get(i);
 			obj[0] = users.get("id");
-			obj[0] = users.get("username");
-			obj[1] = users.get("name");
-			obj[2] = users.get("mobile_no");
-			obj[3] = users.get("qq");
-			obj[4] = users.get("email");
-			obj[5] = users.get("status");
+			obj[1] = users.get("username");
+			obj[2] = users.get("name");
+			obj[3] = users.get("mobile_no");
+			obj[4] = users.get("qq");
+			obj[5] = users.get("email");
+			obj[6] = users.get("status");
 			data[i] = obj;
 		}
 		
