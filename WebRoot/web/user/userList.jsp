@@ -69,12 +69,13 @@ $(document).ready(function() {
         "serverSide": true,
         "columnDefs": [{
             "targets": 0,
-            "orderable": !1,
-            "searchable": !1,
+            "orderable": false,
+            "searchable": false,
             "render": function ( data, type, full, meta ) {
-                return '<input type="checkbox" data-id='+data[0]+' />';
+                return '<input type="checkbox" data-id='+data+' />';
               }
         }],
+        "order": [[1, 'asc']],
         "ajax": "/user/list"
     } );
 } );
