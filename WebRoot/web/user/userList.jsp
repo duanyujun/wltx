@@ -67,6 +67,7 @@ $(document).ready(function() {
     $('#sample_1').dataTable( {
         "processing": true,
         "serverSide": true,
+        "pagingType": "bootstrap_full_number",
         "columnDefs": [{
             "targets": 0,
             "orderable": false,
@@ -76,6 +77,21 @@ $(document).ready(function() {
               }
         }],
         "order": [[1, 'asc']],
+        "language": {
+            "emptyTable": "暂 无 数  据",
+            "info": "显示从_START_到_END_  共_TOTAL_条记录",
+            "infoEmpty": "暂 无 数  据",
+            "infoFiltered": "(filtered1 from _MAX_ total records)",
+            "lengthMenu": "每页显示_MENU_条记录",
+            "search": "搜索:",
+            "zeroRecords": "暂 无 数  据",
+            "paginate": {
+                "previous": "上一页",
+                "next": "下一页",
+                "last": "最后一页",
+                "first": "第一页"
+            }
+        },
         "ajax": "/user/list"
     } );
 } );
