@@ -95,7 +95,7 @@ public class UserController extends Controller {
 	}
 	
 	public void form(){
-		render("form.jsp");
+		render("user/userForm.jsp");
 	}
 	
 	public void submit(){

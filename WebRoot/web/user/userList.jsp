@@ -17,7 +17,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="btn-group">
-                        <button id="sample_editable_1_new" class="btn sbold green"> Add New
+                        <button id="sample_editable_1_new" onclick="goInsert();" class="btn sbold green"> Add New
                             <i class="fa fa-plus"></i>
                         </button>
                     </div>
@@ -95,5 +95,10 @@ $(document).ready(function() {
         "ajax": "/user/list"
     } );
 } );
+
+function goInsert(){
+	$('#main-content').load("/user/edit");
+}
+
 </script>
 

@@ -194,6 +194,9 @@
                 <i class="icon-arrow-up"></i>
             </div>
         </div>
+        
+        <input type="hidden" id="urlHidden" />
+        
         <!-- END FOOTER -->
         <!--[if lt IE 9]>
 <script src="${ctx}/assets/global/plugins/respond.min.js"></script>
@@ -241,6 +244,7 @@ function init(){
         
         	
         	$('#main-content').load(url);
+        	$('#urlHidden').val(url);
         }
     });
 }
