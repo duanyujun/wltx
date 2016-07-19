@@ -1,5 +1,6 @@
 package com.wltx.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -116,6 +117,26 @@ public class UserController extends Controller {
 		}
 		
 		form();
+	}
+	
+	public void save() throws UnsupportedEncodingException{
+		String username = StringUtils.decode(getPara("username"));
+		String password = getPara("password");
+		String name = StringUtils.decode(getPara("name"));
+		String mobile_no = getPara("mobile_no");
+		String qq = getPara("qq");
+		String email = getPara("email");
+		String remark = StringUtils.decode(getPara("remark"));
+		Users users = new Users();
+		users.put("username", username);
+		users.put("password", password);
+		users.put("name",name);
+		users.put("mobile_no",mobile_no);
+		users.put("qq",qq);
+		users.put("email",email);
+		users.put("remark",remark);
+		users.save();
+		renderJson(1);
 	}
 	
 	public void del(){

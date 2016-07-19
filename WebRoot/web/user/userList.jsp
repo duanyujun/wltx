@@ -79,7 +79,7 @@ $(document).ready(function() {
         "order": [[1, 'asc']],
         "language": {
             "emptyTable": "暂 无 数  据",
-            "info": "显示从_START_到_END_  共_TOTAL_条记录",
+            "info": "显示从_START_到_END_条，共_TOTAL_条记录",
             "infoEmpty": "暂 无 数  据",
             "infoFiltered": "(filtered1 from _MAX_ total records)",
             "lengthMenu": "每页显示_MENU_条记录",

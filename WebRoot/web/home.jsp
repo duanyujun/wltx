@@ -30,6 +30,8 @@
         <link href="${ctx}/assets/layouts/layout4/css/layout.min.css" rel="stylesheet" type="text/css" />
         <link href="${ctx}/assets/layouts/layout4/css/themes/light.min.css" rel="stylesheet" type="text/css" id="style_color" />
         <link href="${ctx}/assets/layouts/layout4/css/custom.min.css" rel="stylesheet" type="text/css" />
+        <link href="${ctx}/assets/global/plugins/bootstrap-toastr/toastr.min.css" rel="stylesheet" type="text/css" />
+		<script src="${ctx}/assets/global/plugins/bootstrap-toastr/toastr.js" type="text/javascript"></script>
         <link rel="shortcut icon" href="favicon.ico" /> 
     	<style type="text/css">
     		.page-content-wrapper .page-content{padding:0 0 0 20px;}
@@ -218,6 +220,7 @@
     </body>
 
 <script type="text/javascript">
+
 $(function(){  
 	init();
 });
@@ -248,6 +251,8 @@ function init(){
         }
     });
 }
+
+
 
 </script>
 
