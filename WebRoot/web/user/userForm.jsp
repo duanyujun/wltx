@@ -13,6 +13,7 @@
     </div>
     <div class="portlet-body">
         <form class="form-horizontal" role="form" id="form">
+        	  <input type="hidden" name="id" />
 		      <div class="form-body">
 		          <div class="form-group">
 		              <label class="col-md-3 control-label"><font color="red">*</font>用户名：</label>

@@ -17,8 +17,11 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="btn-group">
-                        <button id="sample_editable_1_new" onclick="goInsert();" class="btn sbold green"> Add New
+                        <button id="sample_editable_1_new" onclick="goInsert();" class="btn sbold green"> 添加用户
                             <i class="fa fa-plus"></i>
+                        </button>
+                        <button id="deleteBtn" onclick="goDelete();" class="btn sbold red" style="margin-left:10px;"> 删除用户
+                            <i class="fa fa-trash"></i>
                         </button>
                     </div>
                 </div>
@@ -74,8 +77,16 @@ $(document).ready(function() {
             "searchable": false,
             "render": function ( data, type, full, meta ) {
                 return '<input type="checkbox" data-id='+data+' />';
-              }
-        }],
+              }},
+              {
+                  "targets": 1,
+                  "orderable": true,
+                  "searchable": true,
+                  "render": function ( data, type, full, meta ) {
+                      return '<a href="" class="editClass">'+data+'</a>';
+                    }}
+        
+        ],
         "order": [[1, 'asc']],
         "language": {
             "emptyTable": "暂 无 数  据",
@@ -94,6 +105,13 @@ $(document).ready(function() {
         },
         "ajax": "/user/list"
     } );
+    
+    alert($(".editClass").length);
+    $(".editClass").click(function(event){
+    	event.preventDefault();	   
+    	alert($(this).prev().child(0).attr("data-id"));
+    	
+    });
 } );
 
 function goInsert(){
