@@ -3,6 +3,7 @@
 <script src="${ctx}/assets/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
 <script src="${ctx}/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
 <script src="${ctx}/assets/global/plugins/bootstrap-toastr/toastr.js" type="text/javascript"></script>
+<script src="${ctx}/assets/global/plugins/bootbox/bootbox.min.js" type="text/javascript"></script>
 
 <div class="portlet light bordered">
     <div class="portlet-title">
@@ -147,14 +148,20 @@ function goDelete(){
 			ids += $(this).attr("data-id")+",";
 		});
 		if(ids!=''){
-			ids = ids.substring(0, ids.length-1);
-			$.post( "/user/del",
-					{ids, ids},
-					function(result){
-						$('#main-content').load($('#urlHidden').val());
-						showToast(1, "删除成功！", "温馨提示");
-					}
-				);
+			 bootbox.setLocale("zh_CN");
+			 bootbox.confirm("确定要删除?",
+           	 function(o) {
+               	if(o==true){
+               		ids = ids.substring(0, ids.length-1);
+           			$.post( "/user/del",
+           					{ids, ids},
+           					function(result){
+           						$('#main-content').load($('#urlHidden').val());
+           						showToast(1, "删除成功！", "温馨提示");
+           					}
+           			);
+               	}
+          	 });
 		}
 	}
 }

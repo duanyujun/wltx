@@ -14,9 +14,6 @@ import com.wltx.utils.StringUtils;
 public class UserController extends Controller {
 
 	public void index(){
-		//List<Users> users = Users.dao.find("select * from users");
-		//setAttr("users", users);
-		//System.err.println(users.size());
 		render("user/userList.jsp");
 	}
 	
@@ -51,7 +48,7 @@ public class UserController extends Controller {
 			orderSql = " order by email "+sortType;
 			break;
 		case 6:
-			orderSql = " order by status "+sortType;
+			orderSql = " order by ustatus "+sortType;
 			break;
 		default:
 			break;
@@ -77,7 +74,14 @@ public class UserController extends Controller {
 				obj[3] = users.get("mobile_no");
 				obj[4] = users.get("qq");
 				obj[5] = users.get("email");
-				obj[6] = users.get("status");
+				if(users.getInt("ustatus")==0){
+					obj[6] = "未激活";
+				}else if(users.getInt("ustatus")==1){
+					obj[6] = "已激活";
+				}else if(users.getInt("ustatus")==2){
+					obj[6] = "已注销";
+				}
+					
 				data[i] = obj;
 			}
 		}
@@ -123,15 +127,18 @@ public class UserController extends Controller {
 		String qq = getPara("qq");
 		String email = getPara("email");
 		String remark = StringUtils.decode(getPara("remark"));
+		int ustatus = getParaToInt("ustatus");
 		Users users = new Users();
-		users.put("username", username);
-		users.put("password", password);
-		users.put("name",name);
-		users.put("mobile_no",mobile_no);
-		users.put("qq",qq);
-		users.put("email",email);
-		users.put("remark",remark);
+		users.set("username", username);
+		users.set("password", password);
+		users.set("name",name);
+		users.set("mobile_no",mobile_no);
+		users.set("qq",qq);
+		users.set("email",email);
+		users.set("remark",remark);
+		users.set("ustatus", ustatus);
 		if(StringUtils.isNotBlank(getPara("id"))){
+			users.set("id", getPara("id"));
 			users.update();
 		}else{
 			users.save();

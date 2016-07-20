@@ -256,7 +256,7 @@ function showToast(type, title, content){
 	toastr.options = {
 			  "closeButton": true,
 			  "debug": false,
-			  "positionClass": "toast-top-right",
+			  "positionClass": "toast-top-center",
 			  "onclick": null,
 			  "showDuration": "1000",
 			  "hideDuration": "1000",
