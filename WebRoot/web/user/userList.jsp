@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <script src="${ctx}/assets/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
 <script src="${ctx}/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
-
+<script src="${ctx}/assets/global/plugins/bootstrap-toastr/toastr.js" type="text/javascript"></script>
 
 <div class="portlet light bordered">
     <div class="portlet-title">
@@ -103,6 +103,7 @@ $(document).ready(function() {
                 "first": "第一页"
             }
         },
+        "bStateSave": !0,
         "ajax": "/user/list"
     } );
     
@@ -135,6 +136,27 @@ function goInsert(id){
 		url = url + "?id="+id;
 	}
 	$('#main-content').load(url);
+}
+
+function goDelete(){
+	if($("input[class='checkboxes']:checked").length==0){
+		showToast(2, "请选择记录！", "温馨提示");
+	}else{
+		var ids = '';
+		$("input[class='checkboxes']:checked").each(function(){
+			ids += $(this).attr("data-id")+",";
+		});
+		if(ids!=''){
+			ids = ids.substring(0, ids.length-1);
+			$.post( "/user/del",
+					{ids, ids},
+					function(result){
+						$('#main-content').load($('#urlHidden').val());
+						showToast(1, "删除成功！", "温馨提示");
+					}
+				);
+		}
+	}
 }
 
 </script>

@@ -84,37 +84,6 @@ function cancel(){
 	$('#main-content').load($('#urlHidden').val());
 }
 
-function showToast(type, title, content){
-	toastr.options = {
-			  "closeButton": true,
-			  "debug": false,
-			  "positionClass": "toast-top-right",
-			  "onclick": null,
-			  "showDuration": "1000",
-			  "hideDuration": "1000",
-			  "timeOut": "5000",
-			  "extendedTimeOut": "1000",
-			  "showEasing": "swing",
-			  "hideEasing": "linear",
-			  "showMethod": "fadeIn",
-			  "hideMethod": "fadeOut"
-			};
-	
-	if(type==1){
-		toastr.success(title, content);
-	}else if(type==2){
-		
-		toastr.info(title, content);
-	}else if(type==3){
-		
-		toastr.warning(title, content);
-	}else if(type==4){
-		
-		toastr.error(title, content);
-	}
-	
-}
-
 function save(){
 	$.post(
 		"/user/save",

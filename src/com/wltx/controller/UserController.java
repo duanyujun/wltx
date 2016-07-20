@@ -141,10 +141,13 @@ public class UserController extends Controller {
 	}
 	
 	public void del(){
-		//index();
-		String id = getPara(0);
-		Users.dao.deleteById(id);
-		redirect("/user");
+		String ids = getPara("ids");
+		if(StringUtils.isNotBlank(ids)){
+			String whereSql = " where id in (" + ids +")";
+			Db.update("delete from users "+whereSql);
+			renderJson(1);
+		}else{
+			renderJson(0);
+		}
 	}
-	
 }
