@@ -13,54 +13,54 @@
     </div>
     <div class="portlet-body">
         <form class="form-horizontal" role="form" id="form">
-        	  <input type="hidden" name="id" />
+        	  <input type="hidden" name="id" value="${user.id}" />
 		      <div class="form-body">
 		          <div class="form-group">
 		              <label class="col-md-3 control-label"><font color="red">*</font>用户名：</label>
 		              <div class="col-md-6">
-		                  <input type="text" class="form-control" name="username" placeholder="请输入用户名">
+		                  <input type="text" class="form-control" name="username" value="${user.username}" placeholder="请输入用户名">
 		              </div>
 		              <div class="col-md-3"></div>
 		          </div>
 		          <div class="form-group">
 		              <label class="col-md-3 control-label"><font color="red">*</font>密码：</label>
 		              <div class="col-md-6">
-		                  <input type="text" class="form-control" name="password" placeholder="请输入密码">
+		                  <input type="text" class="form-control" name="password" value="${user.password}"  placeholder="请输入密码">
 		              </div>
 		              <div class="col-md-3"></div>
 		          </div>
 		          <div class="form-group">
 		              <label class="col-md-3 control-label"><font color="red">*</font>姓名：</label>
 		              <div class="col-md-6">
-		                  <input type="text" class="form-control" name="name" placeholder="请输入姓名">
+		                  <input type="text" class="form-control" name="name" value="${user.name}"  placeholder="请输入姓名">
 		              </div>
 		              <div class="col-md-3"></div>
 		          </div>
 		          <div class="form-group">
 		              <label class="col-md-3 control-label"><font color="red">*</font>手机号：</label>
 		              <div class="col-md-6">
-		                  <input type="text" class="form-control" name="mobile_no" placeholder="请输入手机号">
+		                  <input type="text" class="form-control" name="mobile_no" value="${user.mobile_no}"  placeholder="请输入手机号">
 		              </div>
 		              <div class="col-md-3"></div>
 		          </div>
 		          <div class="form-group">
 		              <label class="col-md-3 control-label">QQ：</label>
 		              <div class="col-md-6">
-		                  <input type="text" class="form-control" name="qq" placeholder="请输入QQ">
+		                  <input type="text" class="form-control" name="qq" value="${user.qq}"  placeholder="请输入QQ">
 		              </div>
 		              <div class="col-md-3"></div>
 		          </div>
 		          <div class="form-group">
 		              <label class="col-md-3 control-label">Email：</label>
 		              <div class="col-md-6">
-		                  <input type="text" class="form-control" name="email" placeholder="请输入Email">
+		                  <input type="text" class="form-control" name="email" value="${user.email}"  placeholder="请输入Email">
 		              </div>
 		              <div class="col-md-3"></div>
 		          </div>
 		          <div class="form-group">
 		              <label class="col-md-3 control-label">备注：</label>
 		              <div class="col-md-6">
-		                  <input type="text" class="form-control" name="remark" placeholder="请输入备注">
+		                  <input type="text" class="form-control" name="remark" value="${user.remark}"  placeholder="请输入备注">
 		              </div>
 		              <div class="col-md-3"></div>
 		          </div>
@@ -101,7 +101,6 @@ function showToast(type, title, content){
 			};
 	
 	if(type==1){
-		
 		toastr.success(title, content);
 	}else if(type==2){
 		
@@ -122,7 +121,7 @@ function save(){
 		encodeURI(encodeURI(decodeURIComponent($('#form').formSerialize(),true))),
 		function(result){
 			$('#main-content').load($('#urlHidden').val());
-			toastr.success(1, "保存成功！", "温馨提示");
+			showToast(1, "保存成功！", "温馨提示");
 			
 		}
 	);

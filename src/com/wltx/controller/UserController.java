@@ -95,10 +95,6 @@ public class UserController extends Controller {
 		renderJson(map);
 	}
 	
-	public void form(){
-		render("user/userForm.jsp");
-	}
-	
 	public void submit(){
 		Users user = getModel(Users.class, "user");
 		if(user.get("id")==null){
@@ -110,13 +106,13 @@ public class UserController extends Controller {
 	}
 	
 	public void edit(){
-		String id = getPara(0);
+		String id = getPara("id");
 		if(id!=null){
 			Users user = Users.dao.findById(id);
 			setAttr("user", user);
 		}
 		
-		form();
+		render("user/userForm.jsp");
 	}
 	
 	public void save() throws UnsupportedEncodingException{
@@ -135,7 +131,12 @@ public class UserController extends Controller {
 		users.put("qq",qq);
 		users.put("email",email);
 		users.put("remark",remark);
-		users.save();
+		if(StringUtils.isNotBlank(getPara("id"))){
+			users.update();
+		}else{
+			users.save();
+		}
+		
 		renderJson(1);
 	}
 	
