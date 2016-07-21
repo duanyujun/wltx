@@ -166,7 +166,7 @@
                                 </li>
                                 
                                 <li class="nav-item  ">
-                                    <a href="/monitor" class="nav-link ">
+                                    <a href="/permission" class="nav-link ">
                                         <span class="title">权限管理</span>
                                     </a>
                                 </li>
