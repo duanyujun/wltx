@@ -153,8 +153,14 @@
                                 <span class="arrow open"></span>
                             </a>
                             <ul class="sub-menu">
+                            	<li class="nav-item  ">
+                                    <a href="/user" class="nav-link ">
+                                        <span class="title">人员管理</span>
+                                    </a>
+                                </li>
+                            
                                 <li class="nav-item  ">
-                                    <a href="/monitor" class="nav-link ">
+                                    <a href="/role" class="nav-link ">
                                         <span class="title">角色管理</span>
                                     </a>
                                 </li>
@@ -162,12 +168,6 @@
                                 <li class="nav-item  ">
                                     <a href="/monitor" class="nav-link ">
                                         <span class="title">权限管理</span>
-                                    </a>
-                                </li>
-                                
-                                <li class="nav-item  ">
-                                    <a href="/user" class="nav-link ">
-                                        <span class="title">人员管理</span>
                                     </a>
                                 </li>
                                 

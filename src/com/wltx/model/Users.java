@@ -13,6 +13,11 @@ public class Users extends Model<Users> {
 	private static final long serialVersionUID = 2920278340134539131L;
 
 	public static Users dao = new Users();
+	
+	/** id */
+	public int getId(){
+		return this.getInt("id");
+	}
 
 	/** 用户名 */
 	public String getUsername() {

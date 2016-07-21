@@ -14,6 +14,11 @@ public class Roles extends Model<Roles> {
 	private static final long serialVersionUID = 2920278340134539131L;
 
 	public static Roles dao = new Roles();
+	
+	/** id */
+	public int getId(){
+		return this.getInt("id");
+	}
 
 	/**
 	 * 权限
