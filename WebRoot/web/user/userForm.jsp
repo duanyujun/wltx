@@ -2,6 +2,8 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <script src="${ctx}/assets/global/plugins/jquery.form.min.js" type="text/javascript"></script>
 <script src="${ctx}/assets/global/plugins/bootstrap-toastr/toastr.js" type="text/javascript"></script>
+<link href="${ctx}/assets/global/plugins/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet" type="text/css" />
+<script src="${ctx}/assets/global/plugins/bootstrap-select/js/bootstrap-select.min.js" type="text/javascript"></script>
 
 <div class="portlet light bordered">
     <div class="portlet-title">
@@ -58,6 +60,16 @@
 		              <div class="col-md-3"></div>
 		          </div>
 		          <div class="form-group">
+                      <label class="control-label col-md-3">角色</label>
+                      <div class="col-md-4">
+                          <select class="bs-select form-control" multiple>
+                              <option>user</option>
+                              <option>system</option>
+                              <option>monitor</option>
+                          </select>
+                      </div>
+                  </div>
+		          <div class="form-group">
 		              <label class="col-md-3 control-label">用户状态：</label>
 		              <div class="col-md-6">
 		                   <label class="checkbox-inline">
@@ -95,7 +107,10 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
-	
+	 $(".bs-select").selectpicker({
+         iconBase: "fa",
+         tickIcon: "fa-check"
+     })
 });
 
 function cancel(){
