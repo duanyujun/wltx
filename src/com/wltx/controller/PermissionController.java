@@ -60,7 +60,7 @@ public class PermissionController extends Controller {
 			lstPerm = Permissions.dao.find(sql+whereSql+orderSql+limitSql);
 			data = new Object[lstPerm.size()];
 			for(int i=0; i<lstPerm.size(); i++){
-				Object[] obj = new Object[4];
+				Object[] obj = new Object[5];
 				Permissions roles = lstPerm.get(i);
 				obj[0] = roles.get("id");
 				obj[1] = roles.get("name");

@@ -1,6 +1,7 @@
 package com.wltx.model;
 
 import java.util.Collection;
+import java.util.Map;
 
 import com.jfinal.plugin.activerecord.Db;
 
@@ -15,9 +16,8 @@ public class Roles extends Model<Roles> {
 
 	public static Roles dao = new Roles();
 	
-	/** id */
-	public int getId(){
-		return this.getInt("id");
+	public Map<String, Object> getAttrs(){
+	    return super.getAttrs();
 	}
 
 	/**

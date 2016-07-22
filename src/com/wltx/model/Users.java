@@ -1,6 +1,7 @@
 package com.wltx.model;
 
 import java.util.Collection;
+import java.util.Map;
 
 
 /**
@@ -14,21 +15,10 @@ public class Users extends Model<Users> {
 
 	public static Users dao = new Users();
 	
-	/** id */
-	public int getId(){
-		return this.getInt("id");
+	public Map<String, Object> getAttrs(){
+	    return super.getAttrs();
 	}
-
-	/** 用户名 */
-	public String getUsername() {
-		return this.getStr("username");
-	}
-
-	/** 密码 */
-	public String getPassword() {
-		return this.getStr("password");
-	}
-
+	
 	public Collection<String> getRoleNameList() {
 		return null;
 	}

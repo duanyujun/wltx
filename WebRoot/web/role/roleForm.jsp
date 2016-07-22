@@ -13,26 +13,26 @@
     </div>
     <div class="portlet-body">
         <form class="form-horizontal" role="form" id="form">
-        	  <input type="hidden" name="id" value="${roles.id}" />
+        	  <input type="hidden" name="id" value="${roles.attrs.id}" />
 		      <div class="form-body">
 		          <div class="form-group">
 		              <label class="col-md-3 control-label"><font color="red">*</font>角色名：</label>
 		              <div class="col-md-6">
-		                  <input type="text" class="form-control" name="username" value="${roles.role_name}" placeholder="请输入角色名">
+		                  <input type="text" class="form-control" name="username" value="${roles.attrs.role_name}" placeholder="请输入角色名">
 		              </div>
 		              <div class="col-md-3"></div>
 		          </div>
 		          <div class="form-group">
 		              <label class="col-md-3 control-label"><font color="red">*</font>角色中文名：</label>
 		              <div class="col-md-6">
-		                  <input type="text" class="form-control" name="password" value="${roles.role_name_cn}"  placeholder="请输入角色中文名">
+		                  <input type="text" class="form-control" name="password" value="${roles.attrs.role_name_cn}"  placeholder="请输入角色中文名">
 		              </div>
 		              <div class="col-md-3"></div>
 		          </div>
 		          <div class="form-group">
 		              <label class="col-md-3 control-label"><font color="red">*</font>描述：</label>
 		              <div class="col-md-6">
-		                  <input type="text" class="form-control" name="name" value="${roles.description}"  placeholder="请输入描述">
+		                  <input type="text" class="form-control" name="name" value="${roles.attrs.description}"  placeholder="请输入描述">
 		              </div>
 		              <div class="col-md-3"></div>
 		          </div>

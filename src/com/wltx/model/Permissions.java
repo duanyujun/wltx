@@ -1,5 +1,7 @@
 package com.wltx.model;
 
+import java.util.Map;
+
 
 /**
  * 权限（资源）
@@ -8,7 +10,11 @@ package com.wltx.model;
  * 
  */
 public class Permissions extends Model<Permissions> {
-	private static final long serialVersionUID = 2920278340134539131L;
+	private static final long serialVersionUID = 1L;
 
 	public static Permissions dao = new Permissions();
+	
+	public Map<String, Object> getAttrs(){
+	    return super.getAttrs();
+	}
 }

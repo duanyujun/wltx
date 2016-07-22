@@ -13,33 +13,33 @@
     </div>
     <div class="portlet-body">
         <form class="form-horizontal" role="form" id="form">
-        	  <input type="hidden" name="id" value="${roles.id}" />
+        	  <input type="hidden" name="id" value="${permission.attrs.id}" />
 		      <div class="form-body">
 		          <div class="form-group">
-		              <label class="col-md-3 control-label"><font color="red">*</font>名称：</label>
+		              <label class="col-md-3 control-label"><font color="red">*</font>权限名称：</label>
 		              <div class="col-md-6">
-		                  <input type="text" class="form-control" name="name" value="${permission.name}" placeholder="请输入权限名">
+		                  <input type="text" class="form-control" name="name" value="${permission.attrs.name}" placeholder="请输入权限名">
 		              </div>
 		              <div class="col-md-3"></div>
 		          </div>
 		          <div class="form-group">
-		              <label class="col-md-3 control-label"><font color="red">*</font>类型：</label>
+		              <label class="col-md-3 control-label"><font color="red">*</font>权限类型：</label>
 		              <div class="col-md-6">
-		                  <input type="text" class="form-control" name="ptype" value="${permission.ptype}"  placeholder="请输入权限类型">
+		                  <input type="text" class="form-control" name="ptype" value="${permission.attrs.ptype}"  placeholder="请输入权限类型">
 		              </div>
 		              <div class="col-md-3"></div>
 		          </div>
 		          <div class="form-group">
-		              <label class="col-md-3 control-label"><font color="red">*</font>值：</label>
+		              <label class="col-md-3 control-label"><font color="red">*</font>权限值：</label>
 		              <div class="col-md-6">
-		                  <input type="text" class="form-control" name="pvalue" value="${permission.pvalue}"  placeholder="请输入权限值">
+		                  <input type="text" class="form-control" name="pvalue" value="${permission.attrs.pvalue}"  placeholder="请输入权限值">
 		              </div>
 		              <div class="col-md-3"></div>
 		          </div>
 		          <div class="form-group">
 		              <label class="col-md-3 control-label"><font color="red">*</font>描述：</label>
 		              <div class="col-md-6">
-		                  <input type="text" class="form-control" name="description" value="${permission.description}"  placeholder="请输入描述">
+		                  <input type="text" class="form-control" name="description" value="${permission.attrs.description}"  placeholder="请输入描述">
 		              </div>
 		              <div class="col-md-3"></div>
 		          </div>
