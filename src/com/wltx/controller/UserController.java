@@ -6,9 +6,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Db;
+import com.jfinal.plugin.activerecord.tx.Tx;
+import com.wltx.model.Roles;
 import com.wltx.model.Users;
+import com.wltx.model.UsersRoles;
 import com.wltx.utils.StringUtils;
 
 public class UserController extends Controller {
@@ -114,11 +118,25 @@ public class UserController extends Controller {
 		if(id!=null){
 			Users user = Users.dao.findById(id);
 			setAttr("user", user);
+			//查询角色
+			List<Roles> roleList = Roles.dao.find("SELECT r.* FROM roles r LEFT JOIN `user_roles` ur on ur.role_id=r.id where ur.user_id=?", user.get("id").toString());
+			if(roleList.size()>0){
+				StringBuilder sb = new StringBuilder();
+				for(int i=0; i<roleList.size(); i++){
+					sb.append(roleList.get(i).getInt("id")).append(",");
+				}
+				if(sb.length()>0){
+					sb.deleteCharAt(sb.length()-1);
+				}
+				setAttr("existRoleIds", sb.toString());
+			}
 		}
-		
+		List<Roles> lstRoles = Roles.dao.find("select * from roles where role_name != 'admin'");
+		setAttr("lstRoles", lstRoles);
 		render("user/userForm.jsp");
 	}
 	
+	@Before(Tx.class)
 	public void save() throws UnsupportedEncodingException{
 		String username = StringUtils.decode(getPara("username"));
 		String password = getPara("password");
@@ -137,11 +155,28 @@ public class UserController extends Controller {
 		users.set("email",email);
 		users.set("remark",remark);
 		users.set("ustatus", ustatus);
+		String roleIds = getPara("roleIds");
+		
 		if(StringUtils.isNotBlank(getPara("id"))){
 			users.set("id", getPara("id"));
 			users.update();
 		}else{
 			users.save();
+		}
+		
+		if(StringUtils.isNotBlank(roleIds)){
+			List<UsersRoles> lstUsersRoles = new ArrayList<UsersRoles>();
+			String[] roleArray = roleIds.split(",");
+			for(int i=0; i<roleArray.length; i++){
+				UsersRoles usersRoles = new UsersRoles();
+				usersRoles.set("user_id", users.get("id"));
+				usersRoles.set("role_id", roleArray[i]);
+				lstUsersRoles.add(usersRoles);
+			}
+			if(lstUsersRoles.size()!=0){
+				Db.update("delete from user_roles where user_id = ?", Integer.valueOf(users.get("id")));
+				Db.batchSave(lstUsersRoles, lstUsersRoles.size());
+			}
 		}
 		
 		renderJson(1);

@@ -11,7 +11,7 @@ import com.jfinal.plugin.activerecord.Db;
  * 
  */
 public class UsersRoles extends Model<UsersRoles> {
-	private static final long serialVersionUID = 2920278340134539131L;
+	private static final long serialVersionUID = 1L;
 
 	public static UsersRoles dao = new UsersRoles();
 

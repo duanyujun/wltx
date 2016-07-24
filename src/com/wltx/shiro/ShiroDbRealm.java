@@ -51,7 +51,7 @@ public class ShiroDbRealm extends AuthorizingRealm {
 		Users user = Users.dao.findFirst("select * from users where username = ? ", userName);
 		if (user != null) {
 			SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
-			List<Roles> roleList = Roles.dao.find("SELECT r.* FROM roles r LEFT JOIN `user_roles` ur on ur.role_id=r.id where ur.user_id=?", user.get("id"));
+			List<Roles> roleList = Roles.dao.find("SELECT r.* FROM roles r LEFT JOIN `user_roles` ur on ur.role_id=r.id where ur.user_id=?", user.get("id").toString());
 			
 			List<String> roleNameList = new ArrayList<String>();
 			for(Roles roles : roleList){

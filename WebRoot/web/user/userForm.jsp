@@ -16,6 +16,7 @@
     <div class="portlet-body">
         <form class="form-horizontal" role="form" id="form">
         	  <input type="hidden" name="id" value="${user.attrs.id}" />
+        	  <input type="hidden" id="roleIds" name="roleIds" value="${existRoleIds}" />
 		      <div class="form-body">
 		          <div class="form-group">
 		              <label class="col-md-3 control-label"><font color="red">*</font>用户名：</label>
@@ -46,6 +47,16 @@
 		              <div class="col-md-3"></div>
 		          </div>
 		          <div class="form-group">
+                      <label class="control-label col-md-3"><font color="red">*</font>角色</label>
+                      <div class="col-md-4">
+                          <select class="bs-select form-control"  multiple >
+                          	  <c:forEach items="${lstRoles}" var="role">
+                          	  		<option value="${role.attrs.id}">${role.attrs.role_name_cn}</option>
+                          	  </c:forEach>
+                          </select>
+                      </div>
+                  </div>
+		          <div class="form-group">
 		              <label class="col-md-3 control-label">QQ：</label>
 		              <div class="col-md-6">
 		                  <input type="text" class="form-control" name="qq" value="${user.attrs.qq}"  placeholder="请输入QQ">
@@ -59,16 +70,7 @@
 		              </div>
 		              <div class="col-md-3"></div>
 		          </div>
-		          <div class="form-group">
-                      <label class="control-label col-md-3">角色</label>
-                      <div class="col-md-4">
-                          <select class="bs-select form-control" multiple>
-                              <option>user</option>
-                              <option>system</option>
-                              <option>monitor</option>
-                          </select>
-                      </div>
-                  </div>
+		          
 		          <div class="form-group">
 		              <label class="col-md-3 control-label">用户状态：</label>
 		              <div class="col-md-6">
@@ -109,8 +111,18 @@
 $(document).ready(function() {
 	 $(".bs-select").selectpicker({
          iconBase: "fa",
-         tickIcon: "fa-check"
-     })
+         tickIcon: "fa-check",
+         noneSelectedText:'请选择'
+     });
+	 if('${existRoleIds}'!=''){
+		 var array = '${existRoleIds}'.split(",");
+		 $('.bs-select').selectpicker('val', array);
+	 }
+	
+	 $('.bs-select').on('changed.bs.select', function (e) {
+		 $("#roleIds").val($(".bs-select").val());
+	 });
+	
 });
 
 function cancel(){
