@@ -2,6 +2,8 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <script src="${ctx}/assets/global/plugins/jquery.form.min.js" type="text/javascript"></script>
 <script src="${ctx}/assets/global/plugins/bootstrap-toastr/toastr.js" type="text/javascript"></script>
+<script src="${ctx}/assets/global/plugins/reveal/jquery.reveal.js" type="text/javascript"></script>
+<link href="${ctx}/assets/global/plugins/reveal/reveal.css" rel="stylesheet" type="text/css" />
 
 <div class="portlet light bordered">
     <div class="portlet-title">
@@ -30,6 +32,15 @@
 		              <div class="col-md-3"></div>
 		          </div>
 		          <div class="form-group">
+		              <label class="col-md-3 control-label"><font color="red">*</font>权限：</label>
+		              <div class="col-md-6">
+		                  <a href="javascript:;" class="btn btn-sm default" data-reveal-id="myModal"> 编辑 
+                               <i class="fa fa-edit"></i>
+                           </a>
+		              </div>
+		              <div class="col-md-3"></div>
+		          </div>
+		          <div class="form-group">
 		              <label class="col-md-3 control-label"><font color="red">*</font>描述：</label>
 		              <div class="col-md-6">
 		                  <input type="text" class="form-control" name="name" value="${roles.attrs.description}"  placeholder="请输入描述">
@@ -48,9 +59,24 @@
     </div>
 </div>
 
+<div id="myModal" class="reveal-modal">
+			<h1>Reveal Modal Goodness</h1>
+			<p>This is a default modal in all its glory, but any of the styles here can easily be changed in the CSS.</p>
+			<a class="close-reveal-modal">&#215;</a>
+		</div>
+
 <script type="text/javascript">
 $(document).ready(function() {
+	var clientWidth = document.body.clientWidth;
+	if(clientWidth>=520){
+		
+	}
 	
+	$('a[data-reveal-id]').click(function(e){
+		e.preventDefault();
+		var modalLocation = $(this).attr('data-reveal-id');
+		$('#'+modalLocation).reveal($(this).data());
+	});
 });
 
 function cancel(){
