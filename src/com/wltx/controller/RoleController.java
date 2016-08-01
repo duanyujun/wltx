@@ -88,6 +88,17 @@ public class RoleController extends Controller {
 		if(id!=null){
 			Roles roles = Roles.dao.findById(id);
 			setAttr("roles", roles);
+			List<RolesPermissions> lstRolesPermissions = RolesPermissions.dao.find("select * from roles_permissions where role_id = ?", id);
+			if(lstRolesPermissions.size()>0){
+				StringBuilder sb = new StringBuilder();
+				for(RolesPermissions rp:lstRolesPermissions){
+					sb.append(rp.get("permission_id")).append(",");
+				}
+				if(sb.length()>0){
+					sb.deleteCharAt(sb.length()-1);
+				}
+				setAttr("permissionids", sb.toString());
+			}
 		}
 		
 		render("role/roleForm.jsp");
