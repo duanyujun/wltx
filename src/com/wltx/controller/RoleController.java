@@ -6,10 +6,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Db;
+import com.jfinal.plugin.activerecord.tx.Tx;
 import com.wltx.model.Permissions;
 import com.wltx.model.Roles;
+import com.wltx.model.RolesPermissions;
 import com.wltx.utils.StringUtils;
 
 public class RoleController extends Controller {
@@ -90,6 +93,7 @@ public class RoleController extends Controller {
 		render("role/roleForm.jsp");
 	}
 	
+	@Before(Tx.class)
 	public void save() throws UnsupportedEncodingException{
 		String role_name = getPara("role_name");
 		String role_name_cn = StringUtils.decode(getPara("role_name_cn"));
@@ -104,6 +108,21 @@ public class RoleController extends Controller {
 			roles.update();
 		}else{
 			roles.save();
+		}
+		
+		//设置权限
+		String permissionIds = getPara("permissionids");
+		if(StringUtils.isNotBlank(permissionIds)){
+			List<RolesPermissions> lstRP = new ArrayList<RolesPermissions>();
+			String[] permIds = permissionIds.split(",");
+			for(String id : permIds){
+				RolesPermissions rp = new RolesPermissions();
+				rp.set("role_id", roles.get("id"));
+				rp.set("permission_id", id);
+				lstRP.add(rp);
+			}
+			Db.update("delete from permissions where role_id = ?",roles.get("id"));
+			Db.batchSave(lstRP, lstRP.size());
 		}
 		
 		renderJson(1);

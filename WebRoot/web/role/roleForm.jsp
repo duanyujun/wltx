@@ -19,6 +19,7 @@
     <div class="portlet-body">
         <form class="form-horizontal" role="form" id="form">
         	  <input type="hidden" name="id" value="${roles.attrs.id}" />
+        	  <input type="hidden" id="permissionids" name="permissionids" value="" />
 		      <div class="form-body">
 		          <div class="form-group">
 		              <label class="col-md-3 control-label"><font color="red">*</font>角色名：</label>
@@ -53,7 +54,7 @@
 		          
 		          <div class="form-group">
 			          <div class="col-md-offset-3 col-md-9">
-	                      <button type="button" class="btn green" onclick="save();">提 交</button>
+	                      <button type="button" class="btn green" onclick="save();">保 存</button>
 	                      <button type="button" class="btn default" onclick="cancel();" style="margin-left:10px;">取 消</button>
 	                  </div>
                   </div>
@@ -64,6 +65,8 @@
 
 <div id="myModal" class="reveal-modal">
 	<ul id="ztree" class="ztree"></ul>
+	<button type="button" class="btn green" onclick="saveTree();" style="margin-left:50%;">确 定</button>
+	<button type="button" class="btn default" onclick="cancelTree();" style="margin-left:10px;">取 消</button>
 	<a class="close-reveal-modal">&#215;</a>
 </div>
 
@@ -114,6 +117,25 @@ function save(){
 			
 		}
 	);
+}
+
+function saveTree(){
+	//get tree checked ids
+	var treeObj = $.fn.zTree.getZTreeObj("ztree");
+    var nodes = treeObj.getCheckedNodes(true);
+    var ids = "";
+	for(var i=0; i<nodes.length; i++){
+		ids = ids + nodes[i].id+",";
+	}
+	if(ids!=""){
+		ids = ids.substring(0, ids.length-1);
+	}
+    $("#permissionids").val(ids);
+    $('#myModal').trigger('reveal:close');
+}
+
+function cancelTree(){
+	$('#myModal').trigger('reveal:close');
 }
 
 </script>
