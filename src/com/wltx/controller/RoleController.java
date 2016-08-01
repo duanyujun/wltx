@@ -8,6 +8,7 @@ import java.util.Map;
 
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Db;
+import com.wltx.model.Permissions;
 import com.wltx.model.Roles;
 import com.wltx.utils.StringUtils;
 
@@ -117,5 +118,19 @@ public class RoleController extends Controller {
 		}else{
 			renderJson(0);
 		}
+	}
+	
+	public void getPemissions(){
+		List<Permissions> lstPermissions = Permissions.dao.find("select * from permissions order by id asc");
+		List<Map<String, Object>> lstMaps = new ArrayList<Map<String,Object>>();
+		for(Permissions p : lstPermissions){
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("id", p.get("id"));
+			map.put("pId", p.get("pid"));
+			map.put("name", p.get("name"));
+			map.put("open", true);
+			lstMaps.add(map);
+		}
+		renderJson(lstMaps);
 	}
 }

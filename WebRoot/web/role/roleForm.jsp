@@ -4,6 +4,9 @@
 <script src="${ctx}/assets/global/plugins/bootstrap-toastr/toastr.js" type="text/javascript"></script>
 <script src="${ctx}/assets/global/plugins/reveal/jquery.reveal.js" type="text/javascript"></script>
 <link href="${ctx}/assets/global/plugins/reveal/reveal.css" rel="stylesheet" type="text/css" />
+<link href="${ctx}/assets/global/plugins/ztree/css/zTreeStyle/zTreeStyle.css" rel="stylesheet" type="text/css" />
+<script src="${ctx}/assets/global/plugins/ztree/js/jquery.ztree.core.min.js" type="text/javascript"></script>
+<script src="${ctx}/assets/global/plugins/ztree/js/jquery.ztree.excheck.min.js" type="text/javascript"></script>
 
 <div class="portlet light bordered">
     <div class="portlet-title">
@@ -60,24 +63,42 @@
 </div>
 
 <div id="myModal" class="reveal-modal">
-			<h1>Reveal Modal Goodness</h1>
-			<p>This is a default modal in all its glory, but any of the styles here can easily be changed in the CSS.</p>
-			<a class="close-reveal-modal">&#215;</a>
-		</div>
+	<ul id="ztree" class="ztree"></ul>
+	<a class="close-reveal-modal">&#215;</a>
+</div>
 
 <script type="text/javascript">
 $(document).ready(function() {
-	var clientWidth = document.body.clientWidth;
-	if(clientWidth>=520){
-		
-	}
 	
+	initztree();
 	$('a[data-reveal-id]').click(function(e){
 		e.preventDefault();
 		var modalLocation = $(this).attr('data-reveal-id');
 		$('#'+modalLocation).reveal($(this).data());
+		var clientWidth = document.body.clientWidth;
+		if(clientWidth>=420){
+			var left = (clientWidth - $(".reveal-modal").width() - 80)/2;
+			$(".reveal-modal").css("left",left+"px");
+		}
 	});
 });
+
+function initztree(){
+	var setting = {
+			check: {
+				enable: true
+			},
+			data: {
+				simpleData: {
+					enable: true
+				}
+			}
+	};
+	$.ajax({ url: "/role/getPemissions", success: function(data){
+         $.fn.zTree.init($("#ztree"), setting, data);
+    }});
+	
+}
 
 function cancel(){
 	$('#main-content').load($('#urlHidden').val());

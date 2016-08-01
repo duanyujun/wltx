@@ -37,7 +37,7 @@ public class MainConfig extends JFinalConfig {
 		// TODO Auto-generated method stub
 		me.setViewType(ViewType.JSP);
 		PropKit.use("config.properties");
-		me.setDevMode(true);
+		me.setDevMode(false);
 		
 		me.setErrorView(401, "/web/error.jsp");
 		me.setErrorView(403, "/web/error.jsp");
