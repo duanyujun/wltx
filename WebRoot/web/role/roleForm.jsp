@@ -19,7 +19,7 @@
     <div class="portlet-body">
         <form class="form-horizontal" role="form" id="form">
         	  <input type="hidden" name="id" value="${roles.attrs.id}" />
-        	  <input type="hidden" id="permissionids" name="permissionids" value="${permissionids}" />
+        	  <input type="hidden" id="permissionids" name="permissionids" value="" />
 		      <div class="form-body">
 		          <div class="form-group">
 		              <label class="col-md-3 control-label"><font color="red">*</font>角色名：</label>
@@ -72,7 +72,6 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
-	
 	initztree();
 	$('a[data-reveal-id]').click(function(e){
 		e.preventDefault();
@@ -97,7 +96,10 @@ function initztree(){
 				}
 			}
 	};
-	$.ajax({ url: "/role/getPemissions", success: function(data){
+	$.ajax({ 
+		url: "/role/getPemissions", 
+		data: {roleId: '${roles.attrs.id}'},
+    	success: function(data){
          $.fn.zTree.init($("#ztree"), setting, data);
     }});
 	

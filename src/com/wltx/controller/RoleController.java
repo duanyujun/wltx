@@ -3,8 +3,10 @@ package com.wltx.controller;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
@@ -92,7 +94,7 @@ public class RoleController extends Controller {
 			if(lstRolesPermissions.size()>0){
 				StringBuilder sb = new StringBuilder();
 				for(RolesPermissions rp:lstRolesPermissions){
-					sb.append(rp.get("permission_id")).append(",");
+					sb.append(rp.getInt("permission_id")).append(",");
 				}
 				if(sb.length()>0){
 					sb.deleteCharAt(sb.length()-1);
@@ -132,7 +134,7 @@ public class RoleController extends Controller {
 				rp.set("permission_id", id);
 				lstRP.add(rp);
 			}
-			Db.update("delete from permissions where role_id = ?",roles.get("id"));
+			Db.update("delete from roles_permissions where role_id = ?",roles.getStr("id"));
 			Db.batchSave(lstRP, lstRP.size());
 		}
 		
@@ -151,6 +153,14 @@ public class RoleController extends Controller {
 	}
 	
 	public void getPemissions(){
+		Set<Integer> set = new HashSet<Integer>();
+		if(StringUtils.isNotBlank(getPara("roleId"))){
+			List<RolesPermissions> lstRP = RolesPermissions.dao.find("select * from roles_permissions where role_id = ?", getPara("roleId"));
+			for(RolesPermissions rp:lstRP){
+				set.add(rp.get("permission_id"));
+			}
+		}
+		
 		List<Permissions> lstPermissions = Permissions.dao.find("select * from permissions order by id asc");
 		List<Map<String, Object>> lstMaps = new ArrayList<Map<String,Object>>();
 		for(Permissions p : lstPermissions){
@@ -159,6 +169,9 @@ public class RoleController extends Controller {
 			map.put("pId", p.get("pid"));
 			map.put("name", p.get("name"));
 			map.put("open", true);
+			if(set.contains(p.get("id"))){
+				map.put("checked", true);
+			}
 			lstMaps.add(map);
 		}
 		renderJson(lstMaps);
