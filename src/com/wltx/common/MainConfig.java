@@ -15,6 +15,7 @@ import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.plugin.ehcache.EhCachePlugin;
 import com.jfinal.render.ViewType;
+import com.wltx.controller.CityController;
 import com.wltx.controller.HomeController;
 import com.wltx.controller.LoginController;
 import com.wltx.controller.MonitorController;
@@ -56,6 +57,8 @@ public class MainConfig extends JFinalConfig {
 		me.add("/user", UserController.class, "web");
 		me.add("/role", RoleController.class, "web");
 		me.add("/permission", PermissionController.class, "web");
+		me.add("/city", CityController.class, "web");
+		
 	}
 
 	@Override
@@ -79,6 +82,7 @@ public class MainConfig extends JFinalConfig {
 		arp.addMapping("permissions", Permissions.class);
 		arp.addMapping("user_roles", UsersRoles.class);
 		arp.addMapping("roles_permissions", RolesPermissions.class);
+		
 		
 		me.add(arp);
 		
