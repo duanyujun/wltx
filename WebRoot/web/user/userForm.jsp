@@ -98,7 +98,7 @@
 		          </div>
 		          <div class="form-group">
 			          <div class="col-md-offset-3 col-md-9">
-	                      <button type="button" class="btn green" onclick="save();">提 交</button>
+	                      <button type="button" class="btn green" onclick="save();">保 存</button>
 	                      <button type="button" class="btn default" onclick="cancel();" style="margin-left:10px;">取 消</button>
 	                  </div>
                   </div>
