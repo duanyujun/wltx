@@ -22,6 +22,10 @@ import com.wltx.controller.MonitorController;
 import com.wltx.controller.PermissionController;
 import com.wltx.controller.RoleController;
 import com.wltx.controller.UserController;
+import com.wltx.model.City;
+import com.wltx.model.Company;
+import com.wltx.model.District;
+import com.wltx.model.Monitor;
 import com.wltx.model.Permissions;
 import com.wltx.model.Roles;
 import com.wltx.model.RolesPermissions;
@@ -82,8 +86,10 @@ public class MainConfig extends JFinalConfig {
 		arp.addMapping("permissions", Permissions.class);
 		arp.addMapping("user_roles", UsersRoles.class);
 		arp.addMapping("roles_permissions", RolesPermissions.class);
-		
-		
+		arp.addMapping("t_city", City.class);
+		arp.addMapping("t_district", District.class);
+		arp.addMapping("t_monitor", Monitor.class);
+		arp.addMapping("t_company", Company.class);
 		me.add(arp);
 		
 		// 缓存插件

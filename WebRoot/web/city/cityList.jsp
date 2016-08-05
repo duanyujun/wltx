@@ -129,7 +129,7 @@ $(document).ready(function() {
 } );
 
 function goInsert(id){
-	var url = "/permission/edit";
+	var url = "/city/edit";
 	if(id){
 		url = url + "?id="+id;
 	}
@@ -150,7 +150,7 @@ function goDelete(){
            	 function(o) {
                	if(o==true){
                		ids = ids.substring(0, ids.length-1);
-           			$.post( "/permission/del",
+           			$.post( "/city/del",
            			       {ids, ids},
            					function(result){
            						$('#main-content').load($('#urlHidden').val());

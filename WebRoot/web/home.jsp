@@ -169,6 +169,11 @@
                                         <span class="title">权限管理</span>
                                     </a>
                                 </li>
+                                <li class="nav-item  ">
+                                    <a href="/city" class="nav-link ">
+                                        <span class="title">城市管理</span>
+                                    </a>
+                                </li>
                                 
                             </ul>
                         </li>

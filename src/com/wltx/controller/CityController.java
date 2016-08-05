@@ -35,6 +35,12 @@ public class CityController extends Controller {
 		case 1:
 			orderSql = " order by name "+sortType;
 			break;
+		case 2:
+			orderSql = " order by longitude "+sortType;
+			break;
+		case 3:
+			orderSql = " order by latitude "+sortType;
+			break;
 		default:
 			break;
 		}
