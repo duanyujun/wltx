@@ -14,6 +14,7 @@ import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.plugin.ehcache.EhCachePlugin;
+import com.jfinal.render.JspRender;
 import com.jfinal.render.ViewType;
 import com.wltx.controller.CityController;
 import com.wltx.controller.HomeController;

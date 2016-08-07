@@ -3,6 +3,7 @@ package com.wltx.model;
 import java.util.Collection;
 
 import com.jfinal.plugin.activerecord.Db;
+import com.jfinal.plugin.activerecord.Model;
 
 /**
  * 用户——角色

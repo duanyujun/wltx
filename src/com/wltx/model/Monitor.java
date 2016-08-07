@@ -2,6 +2,8 @@ package com.wltx.model;
 
 import java.util.Map;
 
+import com.jfinal.plugin.activerecord.Model;
+
 
 /**
  * 

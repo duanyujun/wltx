@@ -3,6 +3,8 @@ package com.wltx.model;
 import java.util.Collection;
 import java.util.Map;
 
+import com.jfinal.plugin.activerecord.Model;
+
 
 /**
  * 用户

@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.Map;
 
 import com.jfinal.plugin.activerecord.Db;
+import com.jfinal.plugin.activerecord.Model;
 
 /**
  * 角色
