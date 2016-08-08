@@ -174,7 +174,11 @@
                                         <span class="title">城市管理</span>
                                     </a>
                                 </li>
-                                
+                                <li class="nav-item  ">
+                                    <a href="/district" class="nav-link ">
+                                        <span class="title">区域管理</span>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         

@@ -14,9 +14,9 @@ import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.plugin.ehcache.EhCachePlugin;
-import com.jfinal.render.JspRender;
 import com.jfinal.render.ViewType;
 import com.wltx.controller.CityController;
+import com.wltx.controller.DistrictController;
 import com.wltx.controller.HomeController;
 import com.wltx.controller.LoginController;
 import com.wltx.controller.MonitorController;
@@ -63,7 +63,7 @@ public class MainConfig extends JFinalConfig {
 		me.add("/role", RoleController.class, "web");
 		me.add("/permission", PermissionController.class, "web");
 		me.add("/city", CityController.class, "web");
-		
+		me.add("/district", DistrictController.class, "web");
 	}
 
 	@Override

@@ -12,15 +12,15 @@ import com.wltx.model.City;
 import com.wltx.model.District;
 import com.wltx.utils.StringUtils;
 
-public class DistrictController extends Controller {
+public class CompanyController extends Controller {
 
 	public void index(){
-		render("district/districtList.jsp");
+		render("company/companyList.jsp");
 	}
 	
 	public void list(){
-		String sumSql = "select count(*) from t_district";
-		String sql = "select * from t_district";
+		String sumSql = "select count(*) from t_company";
+		String sql = "select * from t_company";
 		String orderSql = "";
 		String whereSql = "";
 		String limitSql = "";
@@ -53,11 +53,13 @@ public class DistrictController extends Controller {
 			data = new Object[lstDistrict.size()];
 			for(int i=0; i<lstDistrict.size(); i++){
 				Object[] obj = new Object[5];
-				District district = lstDistrict.get(i);
-				obj[0] = district.get("id");
-				obj[1] = district.get("name");
-				obj[2] = district.get("longitude");
-				obj[3] = district.get("latitude");
+				District company = lstDistrict.get(i);
+				obj[0] = company.get("id");
+				obj[1] = company.get("district_id");
+				obj[2] = company.get("address");
+				obj[3] = company.get("contract");
+				obj[4] = company.get("telephone");
+				obj[5] = company.get("mobile");
 				data[i] = obj;
 			}
 		}
@@ -77,27 +79,27 @@ public class DistrictController extends Controller {
 	public void edit(){
 		String id = getPara("id");
 		if(id!=null){
-			District district = District.dao.findById(id);
-			setAttr("district", district);
+			District company = District.dao.findById(id);
+			setAttr("company", company);
 		}
 		List<City> lstCity = City.dao.find("select * from t_city");
 		setAttr("lstCity", lstCity);
-		render("district/districtForm.jsp");
+		render("company/companyForm.jsp");
 	}
 	
 	public void save() throws UnsupportedEncodingException{
 		String name = StringUtils.decode(getPara("name"));
 		int cityId = getParaToInt("city_id");
 		
-		District district = new District();
-		district.set("name", name);
-		district.set("city_id", cityId);
+		District company = new District();
+		company.set("name", name);
+		company.set("city_id", cityId);
 		
 		if(StringUtils.isNotBlank(getPara("id"))){
-			district.set("id", getPara("id"));
-			district.update();
+			company.set("id", getPara("id"));
+			company.update();
 		}else{
-			district.save();
+			company.save();
 		}
 		
 		renderJson(1);
@@ -107,7 +109,7 @@ public class DistrictController extends Controller {
 		String ids = getPara("ids");
 		if(StringUtils.isNotBlank(ids)){
 			String whereSql = " where id in (" + ids +")";
-			Db.update("delete from t_district "+whereSql);
+			Db.update("delete from t_company "+whereSql);
 			renderJson(1);
 		}else{
 			renderJson(0);
