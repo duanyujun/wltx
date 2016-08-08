@@ -16,6 +16,7 @@ import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.plugin.ehcache.EhCachePlugin;
 import com.jfinal.render.ViewType;
 import com.wltx.controller.CityController;
+import com.wltx.controller.CompanyController;
 import com.wltx.controller.DistrictController;
 import com.wltx.controller.HomeController;
 import com.wltx.controller.LoginController;
@@ -64,6 +65,7 @@ public class MainConfig extends JFinalConfig {
 		me.add("/permission", PermissionController.class, "web");
 		me.add("/city", CityController.class, "web");
 		me.add("/district", DistrictController.class, "web");
+		me.add("/company", CompanyController.class, "web");
 	}
 
 	@Override
