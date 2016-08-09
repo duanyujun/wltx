@@ -55,11 +55,12 @@ public class CompanyController extends Controller {
 				Object[] obj = new Object[5];
 				District company = lstDistrict.get(i);
 				obj[0] = company.get("id");
-				obj[1] = company.get("district_id");
-				obj[2] = company.get("address");
-				obj[3] = company.get("contract");
-				obj[4] = company.get("telephone");
-				obj[5] = company.get("mobile");
+				obj[1] = company.get("name");
+				obj[2] = company.get("district_id");
+				obj[3] = company.get("address");
+				obj[4] = company.get("contract");
+				obj[5] = company.get("telephone");
+				obj[6] = company.get("mobile");
 				data[i] = obj;
 			}
 		}
@@ -82,24 +83,34 @@ public class CompanyController extends Controller {
 			District company = District.dao.findById(id);
 			setAttr("company", company);
 		}
-		List<City> lstCity = City.dao.find("select * from t_city");
-		setAttr("lstCity", lstCity);
+		List<District> lstDistrict = District.dao.find("select * from t_district");
+		setAttr("lstDistrict", lstDistrict);
 		render("company/companyForm.jsp");
 	}
 	
 	public void save() throws UnsupportedEncodingException{
 		String name = StringUtils.decode(getPara("name"));
 		int cityId = getParaToInt("city_id");
+		String address = StringUtils.decode(getPara("address"));
+		String contract = StringUtils.decode(getPara("contract"));
+		String telephone = getPara("telephone");
+		String mobile = getPara("mobile");
+		String remark = StringUtils.decode(getPara("remark"));
 		
-		District company = new District();
-		company.set("name", name);
-		company.set("city_id", cityId);
+		District district = new District();
+		district.set("name", name);
+		district.set("district_id", cityId);
+		district.set("address", address);
+		district.set("contract", contract);
+		district.set("telephone", telephone);
+		district.set("mobile", mobile);
+		district.set("remark", remark);
 		
 		if(StringUtils.isNotBlank(getPara("id"))){
-			company.set("id", getPara("id"));
-			company.update();
+			district.set("id", getPara("id"));
+			district.update();
 		}else{
-			company.save();
+			district.save();
 		}
 		
 		renderJson(1);

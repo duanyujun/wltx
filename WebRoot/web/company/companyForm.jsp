@@ -11,29 +11,63 @@
             <i class="icon-settings font-dark"></i>
             <span class="caption-subject bold uppercase"> Managed Table</span>
         </div>
-        
     </div>
     <div class="portlet-body">
         <form class="form-horizontal" role="form" id="form">
-        	  <input type="hidden" name="id" value="${district.attrs.id}" />
+        	  <input type="hidden" name="id" value="${company.attrs.id}" />
 		      <div class="form-body">
 		          <div class="form-group">
-		              <label class="col-md-3 control-label"><font color="red">*</font>区域名称：</label>
+		              <label class="col-md-3 control-label"><font color="red">*</font>单位名称：</label>
 		              <div class="col-md-6">
-		                  <input type="text" class="form-control" name="name" value="${district.attrs.name}" placeholder="请输入区域名称">
+		                  <input type="text" class="form-control" name="name" value="${company.attrs.name}" placeholder="请输入单位名称">
 		              </div>
 		              <div class="col-md-3"></div>
 		          </div>
 		          <div class="form-group">
-                      <label class="control-label col-md-3"><font color="red">*</font>所在城市：</label>
+                      <label class="control-label col-md-3"><font color="red">*</font>所在片区：</label>
                       <div class="col-md-4">
-                          <select class="bs-select form-control" data-live-search="true" name="city_id">
-                          	  <c:forEach items="${lstCity}" var="city">
-                          	  		<option value="${city.attrs.id}">${city.attrs.name}</option>
+                          <select class="bs-select form-control" data-live-search="true" name="district_id">
+                          	  <c:forEach items="${lstDistrict}" var="district">
+                          	  		<option value="${district.attrs.id}">${district.attrs.name}</option>
                           	  </c:forEach>
                           </select>
                       </div>
                   </div>
+                  <div class="form-group">
+		              <label class="col-md-3 control-label"><font color="red">*</font>地址：</label>
+		              <div class="col-md-6">
+		                  <input type="text" class="form-control" name="name" value="${company.attrs.name}" placeholder="请输入地址">
+		              </div>
+		              <div class="col-md-3"></div>
+		          </div>
+		          <div class="form-group">
+		              <label class="col-md-3 control-label"><font color="red">*</font>联系人：</label>
+		              <div class="col-md-6">
+		                  <input type="text" class="form-control" name="name" value="${company.attrs.contract}" placeholder="请输入联系人">
+		              </div>
+		              <div class="col-md-3"></div>
+		          </div>
+		          <div class="form-group">
+		              <label class="col-md-3 control-label"><font color="red">*</font>电话：</label>
+		              <div class="col-md-6">
+		                  <input type="text" class="form-control" name="name" value="${company.attrs.telephone}" placeholder="请输入电话">
+		              </div>
+		              <div class="col-md-3"></div>
+		          </div>
+		          <div class="form-group">
+		              <label class="col-md-3 control-label"><font color="red">*</font>手机：</label>
+		              <div class="col-md-6">
+		                  <input type="text" class="form-control" name="name" value="${company.attrs.mobile}" placeholder="请输入手机">
+		              </div>
+		              <div class="col-md-3"></div>
+		          </div>
+		          <div class="form-group">
+		              <label class="col-md-3 control-label"><font color="red">*</font>备注：</label>
+		              <div class="col-md-6">
+		                  <input type="text" class="form-control" name="name" value="${company.attrs.remark}" placeholder="请输入备注">
+		              </div>
+		              <div class="col-md-3"></div>
+		          </div>
 		          <div class="form-group">
 			          <div class="col-md-offset-3 col-md-9">
 	                      <button type="button" class="btn green" onclick="save();">保 存</button>
@@ -65,7 +99,7 @@ function cancel(){
 
 function save(){
 	$.post(
-		"/district/save",
+		"/company/save",
 		encodeURI(encodeURI(decodeURIComponent($('#form').formSerialize(),true))),
 		function(result){
 			$('#main-content').load($('#urlHidden').val());

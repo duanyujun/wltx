@@ -18,10 +18,10 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="btn-group">
-                        <button id="sample_editable_1_new" onclick="goInsert();" class="btn sbold green"> 添加区域
+                        <button id="sample_editable_1_new" onclick="goInsert();" class="btn sbold green"> 添加单位
                             <i class="fa fa-plus"></i>
                         </button>
-                        <button id="deleteBtn" onclick="goDelete();" class="btn sbold red" style="margin-left:10px;"> 删除区域
+                        <button id="deleteBtn" onclick="goDelete();" class="btn sbold red" style="margin-left:10px;"> 删除单位
                             <i class="fa fa-trash"></i>
                         </button>
                     </div>
@@ -54,6 +54,11 @@
                 <tr>
                     <th><input type="checkbox" class="group-checkable" data-set="#sample_1 .checkboxes" /></th>
                     <th>名称</th>
+                    <th>区域id</th>
+                    <th>地址</th>
+                    <th>联系人</th>
+                    <th>电话</th>
+                    <th>手机号</th>
                 </tr>
             </thead>
         </table>
@@ -99,7 +104,7 @@ $(document).ready(function() {
             }
         },
         "bStateSave": !0,
-        "ajax": "/district/list"
+        "ajax": "/company/list"
     } );
     
     $('#sample_1').find(".group-checkable").change(function() {
@@ -126,7 +131,7 @@ $(document).ready(function() {
 } );
 
 function goInsert(id){
-	var url = "/district/edit";
+	var url = "/company/edit";
 	if(id){
 		url = url + "?id="+id;
 	}
@@ -147,7 +152,7 @@ function goDelete(){
            	 function(o) {
                	if(o==true){
                		ids = ids.substring(0, ids.length-1);
-           			$.post( "/district/del",
+           			$.post( "/company/del",
            			       {ids, ids},
            					function(result){
            						$('#main-content').load($('#urlHidden').val());
