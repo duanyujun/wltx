@@ -4,6 +4,11 @@
 <script src="${ctx}/assets/global/plugins/bootstrap-toastr/toastr.js" type="text/javascript"></script>
 <link href="${ctx}/assets/global/plugins/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet" type="text/css" />
 <script src="${ctx}/assets/global/plugins/bootstrap-select/js/bootstrap-select.min.js" type="text/javascript"></script>
+<style>
+.error{
+	color:red;
+}
+</style>
 
 <div class="portlet light bordered">
     <div class="portlet-title">
@@ -19,9 +24,9 @@
 		          <div class="form-group">
 		              <label class="col-md-3 control-label"><font color="red">*</font>企业名称：</label>
 		              <div class="col-md-6">
-		                  <input type="text" class="form-control" name="name" value="${company.attrs.name}" placeholder="请输入企业名称">
+		                  <input type="text" class="form-control" id="name" name="name" required value="${company.attrs.name}" placeholder="请输入企业名称">
 		              </div>
-		              <div class="col-md-3"></div>
+		              <div class="col-md-3"><label for="name"></label></div>
 		          </div>
 		          <div class="form-group">
                       <label class="control-label col-md-3"><font color="red">*</font>所在片区：</label>
@@ -36,33 +41,33 @@
                   <div class="form-group">
 		              <label class="col-md-3 control-label"><font color="red">*</font>地址：</label>
 		              <div class="col-md-6">
-		                  <input type="text" class="form-control" name="address" value="${company.attrs.address}" placeholder="请输入地址">
+		                  <input type="text" class="form-control" id="address" name="address" required value="${company.attrs.address}" placeholder="请输入地址">
 		              </div>
-		              <div class="col-md-3"></div>
+		              <div class="col-md-3"><label for="address"></label></div>
 		          </div>
 		          <div class="form-group">
 		              <label class="col-md-3 control-label"><font color="red">*</font>联系人：</label>
 		              <div class="col-md-6">
-		                  <input type="text" class="form-control" name="contract" value="${company.attrs.contract}" placeholder="请输入联系人">
+		                  <input type="text" class="form-control" id="contract" name="contract" required value="${company.attrs.contract}" placeholder="请输入联系人">
 		              </div>
-		              <div class="col-md-3"></div>
+		              <div class="col-md-3"><label for="contract"></label></div>
 		          </div>
 		          <div class="form-group">
 		              <label class="col-md-3 control-label"><font color="red">*</font>电话：</label>
 		              <div class="col-md-6">
-		                  <input type="text" class="form-control" name="telephone" value="${company.attrs.telephone}" placeholder="请输入电话">
+		                  <input type="text" class="form-control" id="telephone" name="telephone" required value="${company.attrs.telephone}" placeholder="请输入电话">
 		              </div>
-		              <div class="col-md-3"></div>
+		              <div class="col-md-3"><label for="telephone"></label></div>
 		          </div>
 		          <div class="form-group">
 		              <label class="col-md-3 control-label"><font color="red">*</font>手机：</label>
 		              <div class="col-md-6">
-		                  <input type="text" class="form-control" name="mobile" value="${company.attrs.mobile}" placeholder="请输入手机">
+		                  <input type="text" class="form-control" id="mobile" name="mobile" required value="${company.attrs.mobile}" placeholder="请输入手机">
 		              </div>
-		              <div class="col-md-3"></div>
+		              <div class="col-md-3"><label for="mobile"></label></div>
 		          </div>
 		          <div class="form-group">
-		              <label class="col-md-3 control-label"><font color="red">*</font>备注：</label>
+		              <label class="col-md-3 control-label">备注：</label>
 		              <div class="col-md-6">
 		                  <input type="text" class="form-control" name="remark" value="${company.attrs.remark}" placeholder="请输入备注">
 		              </div>
@@ -88,6 +93,16 @@ $(document).ready(function() {
 	 if('${company.attrs.district_id}'!=''){
 		 $('.bs-select').selectpicker('val', '${company.attrs.district_id}');
 	 }
+	 
+	 var validator = $("#form").validate({
+			errorPlacement: function(error, element) {
+				$( element )
+					.closest( "form" )
+						.find( "label[for='" + element.attr( "id" ) + "']" )
+							.append( error );
+			},
+			errorElement: "span"
+		});
 });
 
 function cancel(){
@@ -95,15 +110,18 @@ function cancel(){
 }
 
 function save(){
-	$.post(
-		"/company/save",
-		encodeURI(encodeURI(decodeURIComponent($('#form').formSerialize(),true))),
-		function(result){
-			$('#main-content').load($('#urlHidden').val());
-			showToast(1, "保存成功！", "温馨提示");
-			
-		}
-	);
+	var r = $("#form").valid(); 
+	if(r==true){
+		$.post(
+			"/company/save",
+			encodeURI(encodeURI(decodeURIComponent($('#form').formSerialize(),true))),
+			function(result){
+				$('#main-content').load($('#urlHidden').val());
+				showToast(1, "保存成功！", "温馨提示");
+				
+			}
+		);
+	}
 }
 
 </script>
