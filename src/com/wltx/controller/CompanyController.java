@@ -36,6 +36,21 @@ public class CompanyController extends Controller {
 		case 1:
 			orderSql = " order by name "+sortType;
 			break;
+		case 2:
+			orderSql = " order by district_name "+sortType;
+			break;
+		case 3:
+			orderSql = " order by address "+sortType;
+			break;
+		case 4:
+			orderSql = " order by contract "+sortType;
+			break;
+		case 5:
+			orderSql = " order by telephone "+sortType;
+			break;
+		case 6:
+			orderSql = " order by mobile "+sortType;
+			break;
 		default:
 			break;
 		}
