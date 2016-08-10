@@ -230,6 +230,9 @@
         <script src="${ctx}/assets/layouts/layout4/scripts/layout.min.js" type="text/javascript"></script>
         <script src="${ctx}/assets/layouts/layout4/scripts/demo.min.js" type="text/javascript"></script>
         <script src="${ctx}/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
+        <script src="${ctx}/assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+		<script src="${ctx}/assets/global/plugins/jquery-validation/js/localization/messages_zh.min.js" type="text/javascript"></script>
+        
     </body>
 
 <script type="text/javascript">
