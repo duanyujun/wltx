@@ -54,7 +54,7 @@
                 <tr>
                     <th><input type="checkbox" class="group-checkable" data-set="#sample_1 .checkboxes" /></th>
                     <th>名称</th>
-                    <th>区域id</th>
+                    <th>所在片区</th>
                     <th>地址</th>
                     <th>联系人</th>
                     <th>电话</th>

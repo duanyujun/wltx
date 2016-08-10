@@ -20,14 +20,14 @@ public class DistrictController extends Controller {
 	
 	public void list(){
 		String sumSql = "select count(*) from t_district";
-		String sql = "select * from t_district";
+		String sql = "select d.*, c.name city_name from t_district d, t_city c where d.city_id=c.id ";
 		String orderSql = "";
 		String whereSql = "";
 		String limitSql = "";
 		
 		String search = getPara("search[value]");
 		if(StringUtils.isNotBlank(search)){
-			whereSql = " where name like '%"+search+"%'";
+			whereSql = " and name like '%"+search+"%'";
 		}
 		
 		int sortColumn = getParaToInt("order[0][column]");
@@ -35,6 +35,9 @@ public class DistrictController extends Controller {
 		switch (sortColumn) {
 		case 1:
 			orderSql = " order by name "+sortType;
+			break;
+		case 2:
+			orderSql = " order by city_name "+sortType;
 			break;
 		default:
 			break;
@@ -56,8 +59,7 @@ public class DistrictController extends Controller {
 				District district = lstDistrict.get(i);
 				obj[0] = district.get("id");
 				obj[1] = district.get("name");
-				obj[2] = district.get("longitude");
-				obj[3] = district.get("latitude");
+				obj[2] = district.get("city_name");
 				data[i] = obj;
 			}
 		}

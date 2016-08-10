@@ -179,6 +179,11 @@
                                         <span class="title">区域管理</span>
                                     </a>
                                 </li>
+                                <li class="nav-item  ">
+                                    <a href="/company" class="nav-link ">
+                                        <span class="title">单位管理</span>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         

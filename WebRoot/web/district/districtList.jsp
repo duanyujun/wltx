@@ -53,7 +53,8 @@
             <thead>
                 <tr>
                     <th><input type="checkbox" class="group-checkable" data-set="#sample_1 .checkboxes" /></th>
-                    <th>名称</th>
+                    <th>片区名称</th>
+                    <th>所在城市</th>
                 </tr>
             </thead>
         </table>

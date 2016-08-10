@@ -8,7 +8,7 @@ import java.util.Map;
 
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Db;
-import com.wltx.model.City;
+import com.wltx.model.Company;
 import com.wltx.model.District;
 import com.wltx.utils.StringUtils;
 
@@ -20,14 +20,14 @@ public class CompanyController extends Controller {
 	
 	public void list(){
 		String sumSql = "select count(*) from t_company";
-		String sql = "select * from t_company";
+		String sql = "select c.*, d.name district_name from t_company c, t_district d where c.district_id=d.id ";
 		String orderSql = "";
 		String whereSql = "";
 		String limitSql = "";
 		
 		String search = getPara("search[value]");
 		if(StringUtils.isNotBlank(search)){
-			whereSql = " where name like '%"+search+"%'";
+			whereSql = " and name like '%"+search+"%'";
 		}
 		
 		int sortColumn = getParaToInt("order[0][column]");
@@ -46,17 +46,17 @@ public class CompanyController extends Controller {
 			limitSql = " limit "+start+","+length;
 		}
 		Long recordsTotal = Db.queryLong(sumSql+whereSql);
-		List<District> lstDistrict = new ArrayList<District>();
+		List<Company> lstCompany = new ArrayList<Company>();
 		Object[] data = null;
 		if(recordsTotal!=0){
-			lstDistrict = District.dao.find(sql+whereSql+orderSql+limitSql);
-			data = new Object[lstDistrict.size()];
-			for(int i=0; i<lstDistrict.size(); i++){
-				Object[] obj = new Object[5];
-				District company = lstDistrict.get(i);
+			lstCompany = Company.dao.find(sql+whereSql+orderSql+limitSql);
+			data = new Object[lstCompany.size()];
+			for(int i=0; i<lstCompany.size(); i++){
+				Object[] obj = new Object[7];
+				Company company = lstCompany.get(i);
 				obj[0] = company.get("id");
 				obj[1] = company.get("name");
-				obj[2] = company.get("district_id");
+				obj[2] = company.get("district_name");
 				obj[3] = company.get("address");
 				obj[4] = company.get("contract");
 				obj[5] = company.get("telephone");
@@ -80,37 +80,37 @@ public class CompanyController extends Controller {
 	public void edit(){
 		String id = getPara("id");
 		if(id!=null){
-			District company = District.dao.findById(id);
+			Company company = Company.dao.findById(id);
 			setAttr("company", company);
 		}
-		List<District> lstDistrict = District.dao.find("select * from t_district");
+		List<District> lstDistrict = District.dao.find("select d.*, c.name city_name from t_district d, t_city c where d.city_id = c.id order by c.name ");
 		setAttr("lstDistrict", lstDistrict);
 		render("company/companyForm.jsp");
 	}
 	
 	public void save() throws UnsupportedEncodingException{
 		String name = StringUtils.decode(getPara("name"));
-		int cityId = getParaToInt("city_id");
+		int district_id = getParaToInt("district_id");
 		String address = StringUtils.decode(getPara("address"));
 		String contract = StringUtils.decode(getPara("contract"));
-		String telephone = getPara("telephone");
-		String mobile = getPara("mobile");
+		String telephone = StringUtils.decode(getPara("telephone"));
+		String mobile = StringUtils.decode(getPara("mobile"));
 		String remark = StringUtils.decode(getPara("remark"));
 		
-		District district = new District();
-		district.set("name", name);
-		district.set("district_id", cityId);
-		district.set("address", address);
-		district.set("contract", contract);
-		district.set("telephone", telephone);
-		district.set("mobile", mobile);
-		district.set("remark", remark);
+		Company company = new Company();
+		company.set("name", name);
+		company.set("district_id", district_id);
+		company.set("address", address);
+		company.set("contract", contract);
+		company.set("telephone", telephone);
+		company.set("mobile", mobile);
+		company.set("remark", remark);
 		
 		if(StringUtils.isNotBlank(getPara("id"))){
-			district.set("id", getPara("id"));
-			district.update();
+			company.set("id", getPara("id"));
+			company.update();
 		}else{
-			district.save();
+			company.save();
 		}
 		
 		renderJson(1);

@@ -51,12 +51,11 @@ $(document).ready(function() {
         noneSelectedText:'请选择',
         noneResultsText:"查询不到 {0}"
      });
-	 /*
-	 if('${existRoleIds}'!=''){
-		 var array = '${existRoleIds}'.split(",");
-		 $('.bs-select').selectpicker('val', array);
+	 
+	 if('${district.attrs.city_id}'!=''){
+		 $('.bs-select').selectpicker('val', '${district.attrs.city_id}');
 	 }
-	*/
+	
 });
 
 function cancel(){

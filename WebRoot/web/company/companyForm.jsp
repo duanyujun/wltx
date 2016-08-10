@@ -28,7 +28,7 @@
                       <div class="col-md-4">
                           <select class="bs-select form-control" data-live-search="true" name="district_id">
                           	  <c:forEach items="${lstDistrict}" var="district">
-                          	  		<option value="${district.attrs.id}">${district.attrs.name}</option>
+                          	  		<option value="${district.attrs.id}">${district.attrs.name} / ${district.attrs.city_name}</option>
                           	  </c:forEach>
                           </select>
                       </div>
@@ -36,35 +36,35 @@
                   <div class="form-group">
 		              <label class="col-md-3 control-label"><font color="red">*</font>地址：</label>
 		              <div class="col-md-6">
-		                  <input type="text" class="form-control" name="name" value="${company.attrs.name}" placeholder="请输入地址">
+		                  <input type="text" class="form-control" name="address" value="${company.attrs.address}" placeholder="请输入地址">
 		              </div>
 		              <div class="col-md-3"></div>
 		          </div>
 		          <div class="form-group">
 		              <label class="col-md-3 control-label"><font color="red">*</font>联系人：</label>
 		              <div class="col-md-6">
-		                  <input type="text" class="form-control" name="name" value="${company.attrs.contract}" placeholder="请输入联系人">
+		                  <input type="text" class="form-control" name="contract" value="${company.attrs.contract}" placeholder="请输入联系人">
 		              </div>
 		              <div class="col-md-3"></div>
 		          </div>
 		          <div class="form-group">
 		              <label class="col-md-3 control-label"><font color="red">*</font>电话：</label>
 		              <div class="col-md-6">
-		                  <input type="text" class="form-control" name="name" value="${company.attrs.telephone}" placeholder="请输入电话">
+		                  <input type="text" class="form-control" name="telephone" value="${company.attrs.telephone}" placeholder="请输入电话">
 		              </div>
 		              <div class="col-md-3"></div>
 		          </div>
 		          <div class="form-group">
 		              <label class="col-md-3 control-label"><font color="red">*</font>手机：</label>
 		              <div class="col-md-6">
-		                  <input type="text" class="form-control" name="name" value="${company.attrs.mobile}" placeholder="请输入手机">
+		                  <input type="text" class="form-control" name="mobile" value="${company.attrs.mobile}" placeholder="请输入手机">
 		              </div>
 		              <div class="col-md-3"></div>
 		          </div>
 		          <div class="form-group">
 		              <label class="col-md-3 control-label"><font color="red">*</font>备注：</label>
 		              <div class="col-md-6">
-		                  <input type="text" class="form-control" name="name" value="${company.attrs.remark}" placeholder="请输入备注">
+		                  <input type="text" class="form-control" name="remark" value="${company.attrs.remark}" placeholder="请输入备注">
 		              </div>
 		              <div class="col-md-3"></div>
 		          </div>
@@ -85,12 +85,9 @@ $(document).ready(function() {
         noneSelectedText:'请选择',
         noneResultsText:"查询不到 {0}"
      });
-	 /*
-	 if('${existRoleIds}'!=''){
-		 var array = '${existRoleIds}'.split(",");
-		 $('.bs-select').selectpicker('val', array);
+	 if('${company.attrs.district_id}'!=''){
+		 $('.bs-select').selectpicker('val', '${company.attrs.district_id}');
 	 }
-	*/
 });
 
 function cancel(){
