@@ -181,7 +181,7 @@
                                 </li>
                                 <li class="nav-item  ">
                                     <a href="/company" class="nav-link ">
-                                        <span class="title">单位管理</span>
+                                        <span class="title">企业管理</span>
                                     </a>
                                 </li>
                             </ul>

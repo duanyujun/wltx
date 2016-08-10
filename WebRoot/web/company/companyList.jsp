@@ -18,10 +18,10 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="btn-group">
-                        <button id="sample_editable_1_new" onclick="goInsert();" class="btn sbold green"> 添加单位
+                        <button id="sample_editable_1_new" onclick="goInsert();" class="btn sbold green"> 添加企业
                             <i class="fa fa-plus"></i>
                         </button>
-                        <button id="deleteBtn" onclick="goDelete();" class="btn sbold red" style="margin-left:10px;"> 删除单位
+                        <button id="deleteBtn" onclick="goDelete();" class="btn sbold red" style="margin-left:10px;"> 删除企业
                             <i class="fa fa-trash"></i>
                         </button>
                     </div>

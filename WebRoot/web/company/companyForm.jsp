@@ -17,9 +17,9 @@
         	  <input type="hidden" name="id" value="${company.attrs.id}" />
 		      <div class="form-body">
 		          <div class="form-group">
-		              <label class="col-md-3 control-label"><font color="red">*</font>单位名称：</label>
+		              <label class="col-md-3 control-label"><font color="red">*</font>企业名称：</label>
 		              <div class="col-md-6">
-		                  <input type="text" class="form-control" name="name" value="${company.attrs.name}" placeholder="请输入单位名称">
+		                  <input type="text" class="form-control" name="name" value="${company.attrs.name}" placeholder="请输入企业名称">
 		              </div>
 		              <div class="col-md-3"></div>
 		          </div>
