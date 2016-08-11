@@ -7,6 +7,12 @@
 <link href="${ctx}/assets/global/plugins/ztree/css/zTreeStyle/zTreeStyle.css" rel="stylesheet" type="text/css" />
 <script src="${ctx}/assets/global/plugins/ztree/js/jquery.ztree.core.min.js" type="text/javascript"></script>
 <script src="${ctx}/assets/global/plugins/ztree/js/jquery.ztree.excheck.min.js" type="text/javascript"></script>
+<style>
+.error{
+	color:red;
+}
+</style>
+
 
 <div class="portlet light bordered">
     <div class="portlet-title">
@@ -24,16 +30,16 @@
 		          <div class="form-group">
 		              <label class="col-md-3 control-label"><font color="red">*</font>角色名：</label>
 		              <div class="col-md-6">
-		                  <input type="text" class="form-control" name=role_name value="${roles.attrs.role_name}" placeholder="请输入角色名">
+		                  <input type="text" class="form-control" id="role_name" name="role_name" required value="${roles.attrs.role_name}" placeholder="请输入角色名">
 		              </div>
-		              <div class="col-md-3"></div>
+		              <div class="col-md-3"><label for="role_name"></label></div>
 		          </div>
 		          <div class="form-group">
 		              <label class="col-md-3 control-label"><font color="red">*</font>角色中文名：</label>
 		              <div class="col-md-6">
-		                  <input type="text" class="form-control" name="role_name_cn" value="${roles.attrs.role_name_cn}"  placeholder="请输入角色中文名">
+		                  <input type="text" class="form-control" id="role_name_cn" name="role_name_cn" required value="${roles.attrs.role_name_cn}"  placeholder="请输入角色中文名">
 		              </div>
-		              <div class="col-md-3"></div>
+		              <div class="col-md-3"><label for="role_name_cn"></label></div>
 		          </div>
 		          <div class="form-group">
 		              <label class="col-md-3 control-label"><font color="red">*</font>权限：</label>
@@ -45,7 +51,7 @@
 		              <div class="col-md-3"></div>
 		          </div>
 		          <div class="form-group">
-		              <label class="col-md-3 control-label"><font color="red">*</font>描述：</label>
+		              <label class="col-md-3 control-label">描述：</label>
 		              <div class="col-md-6">
 		                  <input type="text" class="form-control" name="description" value="${roles.attrs.description}"  placeholder="请输入描述">
 		              </div>
@@ -83,6 +89,16 @@ $(document).ready(function() {
 			$(".reveal-modal").css("left",left+"px");
 		}
 	});
+	
+	var validator = $("#form").validate({
+		errorPlacement: function(error, element) {
+			$( element )
+				.closest( "form" )
+					.find( "label[for='" + element.attr( "id" ) + "']" )
+						.append( error );
+		},
+		errorElement: "span"
+	});
 });
 
 function initztree(){
@@ -110,15 +126,18 @@ function cancel(){
 }
 
 function save(){
-	$.post(
-		"/role/save",
-		encodeURI(encodeURI(decodeURIComponent($('#form').formSerialize(),true))),
-		function(result){
-			$('#main-content').load($('#urlHidden').val());
-			showToast(1, "保存成功！", "温馨提示");
-			
-		}
-	);
+	var r = $("#form").valid(); 
+	if(r==true){
+		$.post(
+			"/role/save",
+			encodeURI(encodeURI(decodeURIComponent($('#form').formSerialize(),true))),
+			function(result){
+				$('#main-content').load($('#urlHidden').val());
+				showToast(1, "保存成功！", "温馨提示");
+				
+			}
+		);
+	}
 }
 
 function saveTree(){

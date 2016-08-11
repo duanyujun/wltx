@@ -23,21 +23,21 @@
 		          <div class="form-group">
 		              <label class="col-md-3 control-label"><font color="red">*</font>城市名称：</label>
 		              <div class="col-md-6">
-		                  <input type="text" class="form-control" id="name" name="name" required value="${city.attrs.name}" placeholder="请输入城市名称">
+		                  <input type="text" class="form-control" id="name" name="name" maxlength="60" required value="${city.attrs.name}" placeholder="请输入城市名称">
 		              </div>
 		              <div class="col-md-3"><label for="name"></label></div>
 		          </div>
 		          <div class="form-group">
 		              <label class="col-md-3 control-label"><font color="red">*</font>经度：</label>
 		              <div class="col-md-6">
-		                  <input type="text" class="form-control" id="longitude" name="longitude" required value="${city.attrs.longitude}"  placeholder="请输入经度">
+		                  <input type="text" class="form-control" id="longitude" name="longitude" maxlength="40" required value="${city.attrs.longitude}"  placeholder="请输入经度">
 		              </div>
 		              <div class="col-md-3"><label for="longitude"></label></div>
 		          </div>
 		          <div class="form-group">
 		              <label class="col-md-3 control-label"><font color="red">*</font>纬度：</label>
 		              <div class="col-md-6">
-		                  <input type="text" class="form-control" id="latitude" name="latitude" required value="${city.attrs.latitude}"  placeholder="请输入纬度">
+		                  <input type="text" class="form-control" id="latitude" name="latitude" maxlength="40" required value="${city.attrs.latitude}"  placeholder="请输入纬度">
 		              </div>
 		              <div class="col-md-3"><label for="latitude"></label></div>
 		          </div>
