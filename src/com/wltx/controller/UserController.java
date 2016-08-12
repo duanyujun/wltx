@@ -174,7 +174,7 @@ public class UserController extends Controller {
 				lstUsersRoles.add(usersRoles);
 			}
 			if(lstUsersRoles.size()!=0){
-				Db.update("delete from user_roles where user_id = ?", Integer.valueOf(users.get("id")));
+				Db.update("delete from user_roles where user_id = ?", Integer.valueOf(users.getInt("id")));
 				Db.batchSave(lstUsersRoles, lstUsersRoles.size());
 			}
 		}

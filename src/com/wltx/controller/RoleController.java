@@ -157,7 +157,7 @@ public class RoleController extends Controller {
 		if(StringUtils.isNotBlank(getPara("roleId"))){
 			List<RolesPermissions> lstRP = RolesPermissions.dao.find("select * from roles_permissions where role_id = ?", getPara("roleId"));
 			for(RolesPermissions rp:lstRP){
-				set.add(rp.get("permission_id"));
+				set.add(rp.getInt("permission_id"));
 			}
 		}
 		
