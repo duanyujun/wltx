@@ -32,7 +32,7 @@
 		          <div class="form-group">
                       <label class="control-label col-md-3"><font color="red">*</font>所属企业：</label>
                       <div class="col-md-4">
-                          <select class="bs-select form-control" data-live-search="true" name="city_id">
+                          <select class="bs-select form-control" data-live-search="true" name="company_id">
                           	  <c:forEach items="${lstCompany}" var="company">
                           	  		<option value="${company.attrs.id}">${company.attrs.name}</option>
                           	  </c:forEach>
@@ -81,7 +81,7 @@ function save(){
 	var r = $("#form").valid(); 
 	if(r==true){
 		$.post(
-			"/company/save",
+			"/monitor/save",
 			encodeURI(encodeURI(decodeURIComponent($('#form').formSerialize(),true))),
 			function(result){
 				$('#main-content').load($('#urlHidden').val());

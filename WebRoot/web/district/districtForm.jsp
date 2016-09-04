@@ -20,12 +20,12 @@
     </div>
     <div class="portlet-body">
         <form class="form-horizontal" role="form" id="form">
-        	  <input type="hidden" name="id" value="${district.attrs.id}" />
+        	  <input type="hidden" name="id" value="${district.attrs['id']}" />
 		      <div class="form-body">
 		          <div class="form-group">
 		              <label class="col-md-3 control-label"><font color="red">*</font>片区名称：</label>
 		              <div class="col-md-6">
-		                  <input type="text" class="form-control" id="name" name="name" maxlength="60" required value="${district.attrs.name}" placeholder="请输入片区名称">
+		                  <input type="text" class="form-control" id="name" name="name" maxlength="60" required value="${district.attrs['name']}" placeholder="请输入片区名称">
 		              </div>
 		              <div class="col-md-3"><label for="name"></label></div>
 		          </div>
@@ -34,7 +34,7 @@
                       <div class="col-md-4">
                           <select class="bs-select form-control" data-live-search="true" name="city_id">
                           	  <c:forEach items="${lstCity}" var="city">
-                          	  		<option value="${city.attrs.id}">${city.attrs.name}</option>
+                          	  		<option value="${city.attrs['id']}">${city.attrs['name']}</option>
                           	  </c:forEach>
                           </select>
                       </div>
