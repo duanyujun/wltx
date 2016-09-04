@@ -184,6 +184,11 @@
                                         <span class="title">企业管理</span>
                                     </a>
                                 </li>
+                                <li class="nav-item  ">
+                                    <a href="/monitor" class="nav-link ">
+                                        <span class="title">监控点管理</span>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         
