@@ -96,7 +96,7 @@ public class MainConfig extends JFinalConfig {
 		me.add(arp);
 		
 		// 缓存插件
-		me.add(new EhCachePlugin());
+		//me.add(new EhCachePlugin());
 		
 		// 加载Shiro插件
 		ShiroPlugin shiroPlugin = new ShiroPlugin(routes);
