@@ -91,10 +91,41 @@ public class MonitorController extends Controller {
 	public void save() throws UnsupportedEncodingException{
 		String name = StringUtils.decode(getPara("name"));
 		int companyId = getParaToInt("company_id");
+		String purifier_type = StringUtils.decode(getPara("purifier_type"));
+		String collector_type = StringUtils.decode(getPara("collector_type"));
+		String collector_numb = StringUtils.decode(getPara("collector_numb"));
+		String longitude = getPara("longitude");
+		String latitude = getPara("latitude");
+		String create_date = getPara("create_date");
+		String purify_pre = getPara("purify_pre");
+		String purify_after = getPara("purify_after");
+		String purify_rate = getPara("purify_rate");
+		
+		int is_overproof = getParaToInt("is_overproof");
+		int purifier_status = getParaToInt("purifier_status");
+		int fan_status = getParaToInt("fan_status");
+		int collect_status = getParaToInt("collect_status");
+		int is_online = getParaToInt("is_online");
+		String refresh_time = getPara("refresh_time");
 		
 		Monitor monitor = new Monitor();
 		monitor.set("name", name);
 		monitor.set("company_id", companyId);
+		monitor.set("purifier_type", purifier_type);
+		monitor.set("collector_type", collector_type);
+		monitor.set("collector_numb", collector_numb);
+		monitor.set("longitude", longitude);
+		monitor.set("latitude", latitude);
+		monitor.set("create_date", create_date);
+		monitor.set("purify_pre", purify_pre);
+		monitor.set("purify_after", purify_after);
+		monitor.set("purify_rate", purify_rate);
+		monitor.set("is_overproof", is_overproof);
+		monitor.set("purifier_status", purifier_status);
+		monitor.set("fan_status", fan_status);
+		monitor.set("collect_status", collect_status);
+		monitor.set("is_online", is_online);
+		monitor.set("refresh_time", refresh_time);
 		
 		if(StringUtils.isNotBlank(getPara("id"))){
 			monitor.set("id", getPara("id"));

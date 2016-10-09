@@ -84,7 +84,7 @@
 		          <div class="form-group">
 		              <label class="col-md-3 control-label">净化前：</label>
 		              <div class="col-md-6">
-		                  <input type="text" class="form-control" id="purify_pre" name="purify_pre" maxlength="100" required value="${monitor.attrs.purify_pre}" placeholder="请输入净化前">
+		                  <input type="text" class="form-control" id="purify_pre" name="purify_pre" maxlength="100" value="${monitor.attrs.purify_pre}" placeholder="请输入净化前">
 		              </div>
 		              <div class="col-md-3"><label for="purify_pre"></label></div>
 		          </div>
@@ -96,9 +96,9 @@
 		              <div class="col-md-3"><label for="purify_after"></label></div>
 		          </div>
 		          <div class="form-group">
-		              <label class="col-md-3 control-label">净化率：</label>
+		              <label class="col-md-3 control-label">净化率（%）：</label>
 		              <div class="col-md-6">
-		                  <input type="text" class="form-control" id="purify_rate" name="purify_rate" maxlength="100" required value="${monitor.attrs.purify_rate}" placeholder="请输入净化率">
+		                  <input type="text" class="form-control" id="purify_rate" name="purify_rate" maxlength="100"  value="${monitor.attrs.purify_rate}" placeholder="请输入净化率">
 		              </div>
 		              <div class="col-md-3"><label for="purify_rate"></label></div>
 		          </div>
@@ -126,9 +126,9 @@
 		          <div class="form-group">
 		              <label class="col-md-3 control-label">采集器状态：</label>
 		              <div class="col-md-6">
-		                  <input type="text" class="form-control" id="fan_status" name="fan_status" maxlength="1" required value="${monitor.attrs.fan_status}" placeholder="请输入采集器状态">
+		                  <input type="text" class="form-control" id="collect_status" name="collect_status" maxlength="1" required value="${monitor.attrs.collect_status}" placeholder="请输入采集器状态">
 		              </div>
-		              <div class="col-md-3"><label for="fan_status"></label></div>
+		              <div class="col-md-3"><label for="collect_status"></label></div>
 		          </div>
 		          <div class="form-group">
 		              <label class="col-md-3 control-label">是否离线：</label>
