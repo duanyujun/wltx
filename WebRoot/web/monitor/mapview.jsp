@@ -73,7 +73,7 @@
 		 });      
 		 var marker = new BMap.Marker(point, {icon: myIcon});    
 		 map.addOverlay(marker);    
-		 hashmap.put(data[i].id,marker);
+		 hashmap.put(data.id,marker);
 		 
 		 marker.addEventListener("click", function(){   
 				var opts = {    
