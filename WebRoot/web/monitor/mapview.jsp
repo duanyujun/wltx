@@ -1,6 +1,7 @@
 <%@ include file="/common/include.jsp"%>
 <%@ page contentType="text/html;charset=UTF-8"%>
 
+
 <style type="text/css">
 	.font-12{
 		font-size:12px;
@@ -28,9 +29,10 @@
     </div>
 </div>
 
+<script src="${ctx}/assets/pages/scripts/hashmap.js" type="text/javascript"></script>
 <script type="text/javascript">
 	var map;
-	
+	var hashmap = new HashMap(); 
 	$(document).ready(function() {
 		initMap();
 		drawMarkers();
@@ -55,8 +57,9 @@
 			  success: function(data){
 				  var tbody;
 				  for(var i=0; i<data.length; i++){
-					  tbody += "<tr class='cursor-pointer' onclick='setCenter("+data[i].longitude+","+data[i].latitude+")'><td title='"+data[i].name+"'><nobr><span class=font-12>"+data[i].name+"</span></nobr></td></tr>";
+					  tbody += "<tr class='cursor-pointer' onclick='setCenter("+data[i].longitude+","+data[i].latitude+", "+data[i].id+")'><td title='"+data[i].name+"'><nobr><span class=font-12>"+data[i].name+"</span></nobr></td></tr>";
 					  var onePoint = new BMap.Point(data[i].longitude, data[i].latitude);
+					  
 					  addMarker(onePoint, i, data[i]);
 				  }
 				  $("#tbody").append(tbody);
@@ -70,6 +73,7 @@
 		 });      
 		 var marker = new BMap.Marker(point, {icon: myIcon});    
 		 map.addOverlay(marker);    
+		 hashmap.put(data[i].id,marker);
 		 
 		 marker.addEventListener("click", function(){   
 				var opts = {    
@@ -83,9 +87,15 @@
 		
 	}   
 	
-	function setCenter(longitude, latitude){
+	function setCenter(longitude, latitude, id){
 		var centerPoint = new BMap.Point(longitude, latitude);
 		map.centerAndZoom(centerPoint, 17);  
+		
+		var centerIcon = new BMap.Icon("${ctx}/assets/pages/img/marker-checked.png", new BMap.Size(23, 25), {    
+			   offset: new BMap.Size(10, 25)
+		}); 
+		var marker = hashmap.get(id);
+		marker.setIcon(centerIcon);
 	}
 	
 </script>
