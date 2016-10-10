@@ -55,7 +55,7 @@
 			  success: function(data){
 				  var tbody;
 				  for(var i=0; i<data.length; i++){
-					  tbody += "<tr class='cursor-pointer'><td title='"+data[i].name+"'><nobr><span class=font-12>"+data[i].name+"</span></nobr></td></tr>";
+					  tbody += "<tr class='cursor-pointer' onclick='setCenter("+data[i].longitude+","+data[i].latitude+")'><td title='"+data[i].name+"'><nobr><span class=font-12>"+data[i].name+"</span></nobr></td></tr>";
 					  var onePoint = new BMap.Point(data[i].longitude, data[i].latitude);
 					  addMarker(onePoint, i, data[i]);
 				  }
@@ -82,6 +82,11 @@
 			 });
 		
 	}   
+	
+	function setCenter(longitude, latitude){
+		var centerPoint = new BMap.Point(longitude, latitude);
+		map.centerAndZoom(centerPoint, 17);  
+	}
 	
 </script>
 
