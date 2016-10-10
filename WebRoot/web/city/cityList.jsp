@@ -131,7 +131,8 @@ $(document).ready(function() {
 function goInsert(id){
 	var url = "/city/edit";
 	if(id){
-		url = url + "?id="+id;
+		var timestamp=new Date().getTime();
+		url = url + "?id="+id+"&t="+timestamp;
 	}
 	$('#main-content').load(url);
 }

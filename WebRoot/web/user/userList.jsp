@@ -67,6 +67,11 @@
 </div>
 
 <script type="text/javascript">
+$.ajaxSetup ({ 
+    cache: false
+}); 
+
+
 $(document).ready(function() {
     $('#sample_1').dataTable( {
         "processing": true,
@@ -134,7 +139,8 @@ $(document).ready(function() {
 function goInsert(id){
 	var url = "/user/edit";
 	if(id){
-		url = url + "?id="+id;
+		var timestamp=new Date().getTime();
+		url = url + "?id="+id+"&t="+timestamp;
 	}
 	$('#main-content').load(url);
 }

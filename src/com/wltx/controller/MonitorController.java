@@ -8,7 +8,6 @@ import java.util.Map;
 
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Db;
-import com.wltx.model.City;
 import com.wltx.model.Company;
 import com.wltx.model.Monitor;
 import com.wltx.utils.StringUtils;
@@ -17,6 +16,10 @@ public class MonitorController extends Controller {
 
 	public void index(){
 		render("monitor/monitorList.jsp");
+	}
+	
+	public void mapview(){
+		render("monitor/mapview.jsp");
 	}
 	
 	public void list(){
@@ -146,6 +149,11 @@ public class MonitorController extends Controller {
 		}else{
 			renderJson(0);
 		}
+	}
+	
+	public void markers() {
+		List<Monitor> listMonitor = Monitor.dao.find("select * from t_monitor ");
+		renderJson(listMonitor);
 	}
 	
 }

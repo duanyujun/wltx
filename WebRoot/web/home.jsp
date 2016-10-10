@@ -113,7 +113,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item  ">
-                                    <a href="/monitor" class="nav-link ">
+                                    <a href="/monitor/mapview" class="nav-link ">
                                         <span class="title">地图监控</span>
                                     </a>
                                 </li>
@@ -236,7 +236,7 @@
         <script src="${ctx}/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
         <script src="${ctx}/assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
 		<script src="${ctx}/assets/global/plugins/jquery-validation/js/localization/messages_zh.min.js" type="text/javascript"></script>
-        
+        <script src="http://api.map.baidu.com/api?v=2.0&ak=F389kFdrmsN4UtGQkBM3kpMB4c84mNxe" type="text/javascript"></script>
     </body>
 
 <script type="text/javascript">
