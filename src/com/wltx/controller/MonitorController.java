@@ -22,6 +22,10 @@ public class MonitorController extends Controller {
 		render("monitor/mapview.jsp");
 	}
 	
+	public void tableview(){
+		render("monitor/tableview.jsp");
+	}
+	
 	public void list(){
 		String sumSql = "select count(*) from t_monitor";
 		String sql = "select d.*, c.name company_name from t_monitor d, t_company c where d.company_id=c.id ";
@@ -154,6 +158,92 @@ public class MonitorController extends Controller {
 	public void markers() {
 		List<Monitor> listMonitor = Monitor.dao.find("select * from t_monitor ");
 		renderJson(listMonitor);
+	}
+	
+	public void tlist(){
+		String sumSql = "select count(d.id) from t_monitor d, t_company c, t_district t where d.company_id=c.id and c.district_id = t.id";
+		String sql = "select d.*, c.name company_name, t.name district_name from t_monitor d, t_company c, t_district t where d.company_id=c.id and c.district_id = t.id ";
+		String orderSql = "";
+		String whereSql = "";
+		String limitSql = "";
+		
+		String search = getPara("search[value]");
+		if(StringUtils.isNotBlank(search)){
+			whereSql = " and ( d.name like '%"+search+"%'" + " or monitor_no like '%"+search+"%'"+ " or t.name like '%"+search+"%'" + ")";
+		}
+		
+		int sortColumn = getParaToInt("order[0][column]");
+		String sortType = getPara("order[0][dir]");
+		switch (sortColumn) {
+		case 1:
+			orderSql = " order by name "+sortType;
+			break;
+		case 2:
+			orderSql = " order by monitor_no "+sortType;
+			break;
+		case 3:
+			orderSql = " order by is_online "+sortType;
+			break;
+		case 4:
+			orderSql = " order by purify_after "+sortType;
+			break;
+		case 5:
+			orderSql = " order by fan_status "+sortType;
+			break;
+		case 6:
+			orderSql = " order by collect_status "+sortType;
+			break;
+		case 7:
+			orderSql = " order by monitor_status "+sortType;
+			break;
+		case 8:
+			orderSql = " order by district_name "+sortType;
+			break;
+		case 9:
+			orderSql = " order by refresh_time "+sortType;
+			break;
+		default:
+			break;
+		}
+		
+		int start = getParaToInt("start");
+		int length = getParaToInt("length");
+		if(length!=-1){
+			limitSql = " limit "+start+","+length;
+		}
+		Long recordsTotal = Db.queryLong(sumSql+whereSql);
+		List<Monitor> lstmonitor = new ArrayList<Monitor>();
+		Object[] data = null;
+		if(recordsTotal!=0){
+			lstmonitor = Monitor.dao.find(sql+whereSql+orderSql+limitSql);
+			data = new Object[lstmonitor.size()];
+			for(int i=0; i<lstmonitor.size(); i++){
+				Object[] obj = new Object[10];
+				Monitor monitor = lstmonitor.get(i);
+				obj[0] = monitor.get("id");
+				obj[1] = monitor.get("name");
+				obj[2] = monitor.get("monitor_no");
+				obj[3] = monitor.get("is_online");
+				obj[4] = monitor.get("purify_after");
+				obj[5] = monitor.get("fan_status");
+				obj[6] = monitor.get("collect_status");
+				obj[7] = monitor.get("monitor_status");
+				obj[8] = monitor.get("district_name");
+				obj[9] = monitor.get("refresh_time");
+				data[i] = obj;
+			}
+		}
+		if(data==null){
+			data = new Object[0];
+		}
+		
+		Map<Object, Object> map = new HashMap<Object, Object>();
+		map.put("draw", getParaToInt("draw"));
+		map.put("recordsTotal", recordsTotal);
+		map.put("recordsFiltered", recordsTotal);
+		map.put("data", data);
+		
+		renderJson(map);
 	}
 	
 }

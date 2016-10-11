@@ -107,7 +107,7 @@
                             </a>
                             <ul class="sub-menu">
                                 <li class="nav-item">
-                                    <a href="/monitor" class="nav-link ">
+                                    <a href="/monitor/tableview" class="nav-link ">
                                         <span class="title">表格监控</span>
                                         <span class="selected"></span>
                                     </a>

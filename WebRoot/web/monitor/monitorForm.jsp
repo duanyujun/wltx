@@ -40,6 +40,13 @@
                       </div>
                   </div>
                   <div class="form-group">
+		              <label class="col-md-3 control-label"><font color="red">*</font>设备编号：</label>
+		              <div class="col-md-6">
+		                  <input type="text" class="form-control" id="monitor_no" name="monitor_no" maxlength="100" required value="${monitor.attrs.monitor_no}" placeholder="请输入设备编号">
+		              </div>
+		              <div class="col-md-3"><label for="monitor_no"></label></div>
+		          </div>
+                  <div class="form-group">
 		              <label class="col-md-3 control-label"><font color="red">*</font>净化器型号：</label>
 		              <div class="col-md-6">
 		                  <input type="text" class="form-control" id="purifier_type" name="purifier_type" maxlength="100" required value="${monitor.attrs.purifier_type}" placeholder="请输入净化器型号">
