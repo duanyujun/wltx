@@ -97,15 +97,15 @@
         <div class="page-container">
             <div class="page-sidebar-wrapper">
                 <div class="page-sidebar navbar-collapse collapse">
-                    <ul class="page-sidebar-menu   " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
-                        <li class="nav-model nav-item">
+                    <ul class="page-sidebar-menu" data-keep-expanded="true" data-auto-scroll="true" data-slide-speed="200">
+                        <li class="nav-model nav-item open">
                             <a href="javascript:;" class="nav-link nav-toggle">
                                 <i class="icon-settings"></i>
-                                <span class="title">功能</span>
+                                <span class="title">监控功能</span>
                                 <span class="selected"></span>
                                 <span class="arrow open"></span>
                             </a>
-                            <ul class="sub-menu">
+                            <ul class="sub-menu" >
                                 <li class="nav-item">
                                     <a href="/monitor/tableview" class="nav-link ">
                                         <span class="title">表格监控</span>
@@ -117,38 +117,15 @@
                                         <span class="title">地图监控</span>
                                     </a>
                                 </li>
-                                <li class="nav-item  ">
-                                    <a href="/monitor" class="nav-link ">
-                                        <span class="title">数据管理</span>
-                                    </a>
-                                </li>
-                                
-                                <li class="nav-item  ">
-                                    <a href="/monitor" class="nav-link ">
-                                        <span class="title">数据统计</span>
-                                    </a>
-                                </li>
-                                
-                                <li class="nav-item  ">
-                                    <a href="/monitor" class="nav-link ">
-                                        <span class="title">实时数据</span>
-                                    </a>
-                                </li>
-                                
-                                <li class="nav-item  ">
-                                    <a href="/monitor" class="nav-link ">
-                                        <span class="title">历史数据</span>
-                                    </a>
-                                </li>
                             </ul>
                         </li>
                         
                         <li class="nav-model nav-item">
-                            <a href="javascript:;" class="nav-link nav-toggle">
+                            <a href="javascript:;" class="nav-link ">
                                 <i class="icon-settings"></i>
                                 <span class="title">系统管理</span>
                                 <span class="selected"></span>
-                                <span class="arrow open"></span>
+                                <span class="arrow"></span>
                             </a>
                             <ul class="sub-menu">
                             	<li class="nav-item  ">
@@ -270,6 +247,9 @@ function init(){
         	$('#urlHidden').val(url);
         }
     });
+	
+	$(".sub-menu").eq(0).show();
+	//$('.sub-menu li a').eq(0).click();
 }
 
 function showToast(type, title, content){

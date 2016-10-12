@@ -9,12 +9,12 @@
     <div class="portlet-title">
         <div class="caption font-dark">
             <i class="icon-settings font-dark"></i>
-            <span class="caption-subject bold uppercase"> Managed Table</span>
+            <span class="caption-subject bold uppercase"> 权限管理 </span>
         </div>
         
     </div>
-    <div class="portlet-body">
-        <div class="table-toolbar">
+    <div class="portlet-body" >
+        <div class="table-toolbar" style="display:none;">
             <div class="row">
                 <div class="col-md-6">
                     <div class="btn-group">
