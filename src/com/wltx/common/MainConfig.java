@@ -28,6 +28,7 @@ import com.wltx.model.City;
 import com.wltx.model.Company;
 import com.wltx.model.District;
 import com.wltx.model.Monitor;
+import com.wltx.model.MonitorData;
 import com.wltx.model.Permissions;
 import com.wltx.model.Roles;
 import com.wltx.model.RolesPermissions;
@@ -93,6 +94,8 @@ public class MainConfig extends JFinalConfig {
 		arp.addMapping("t_district", District.class);
 		arp.addMapping("t_monitor", Monitor.class);
 		arp.addMapping("t_company", Company.class);
+		arp.addMapping("t_monitor_data", MonitorData.class);
+		
 		me.add(arp);
 		
 		// 缓存插件

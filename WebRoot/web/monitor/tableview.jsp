@@ -36,6 +36,7 @@ $(document).ready(function() {
     $('#sample_1').dataTable( {
         "processing": true,
         "serverSide": true,
+        "orderClasses": false,
         "pagingType": "bootstrap_full_number",
         "columnDefs": [{
             "targets": 0,
@@ -132,9 +133,17 @@ $(document).ready(function() {
     
     $('#sample_1').on('draw.dt', function () {
     	 $(this).find(".editClass").click(function(event){
-    	    	event.preventDefault();
-    	    	var id = $(this).parent().prev().children(0).attr("data-id");
-    	    	goInsert(id);
+    	       event.preventDefault();
+    	       var id = $(this).parent().prev().children(0).attr("data-id");
+    	       var url='/monitor/dataview?id='+id;  
+   	           var name='查看数据明细';                     
+   	           var iWidth=900;                      
+   	           var iHeight=600; 
+   	           //获得窗口的垂直位置 
+   	           var iTop = (window.screen.availHeight - 30 - iHeight) / 2; 
+   	           //获得窗口的水平位置 
+   	           var iLeft = (window.screen.availWidth - 10 - iWidth) / 2; 
+   	           window.open(url, name, 'height=' + iHeight + ',,innerHeight=' + iHeight + ',width=' + iWidth + ',innerWidth=' + iWidth + ',top=' + iTop + ',left=' + iLeft + ',status=no,toolbar=no,menubar=no,location=no,resizable=no,scrollbars=0,titlebar=no'); 
     	 });
     } );
     

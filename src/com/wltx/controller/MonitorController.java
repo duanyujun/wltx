@@ -10,6 +10,7 @@ import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Db;
 import com.wltx.model.Company;
 import com.wltx.model.Monitor;
+import com.wltx.model.MonitorData;
 import com.wltx.utils.StringUtils;
 
 public class MonitorController extends Controller {
@@ -24,6 +25,16 @@ public class MonitorController extends Controller {
 	
 	public void tableview(){
 		render("monitor/tableview.jsp");
+	}
+	
+	public void dataview(){
+		String id = getPara("id");
+		if(StringUtils.isNotBlank(id)){
+			Monitor monitor = Monitor.dao.findFirst("select * from t_monitor where id = ?", id);
+			setAttr("monitor_name", monitor.get("name"));
+			setAttr("monitor_no", monitor.get("monitor_no"));
+		}
+		render("monitor/dataview.jsp");
 	}
 	
 	public void list(){
@@ -230,6 +241,83 @@ public class MonitorController extends Controller {
 				obj[7] = monitor.get("monitor_status");
 				obj[8] = monitor.get("district_name");
 				obj[9] = monitor.get("refresh_time");
+				data[i] = obj;
+			}
+		}
+		if(data==null){
+			data = new Object[0];
+		}
+		
+		Map<Object, Object> map = new HashMap<Object, Object>();
+		map.put("draw", getParaToInt("draw"));
+		map.put("recordsTotal", recordsTotal);
+		map.put("recordsFiltered", recordsTotal);
+		map.put("data", data);
+		
+		renderJson(map);
+	}
+	
+	public void alldata(){
+		String monitor_no = getPara("monitor_no");
+		if(monitor_no!=null){
+			List<MonitorData> lstMonitorData = MonitorData.dao.find("select * from t_monitor where monitor_no = ?", monitor_no);
+			setAttr("lstData", lstMonitorData);
+		}
+		render("monitor/alldata.jsp");
+		
+		
+		String sumSql = "select count(*) from t_monitor_data where monitor_no = '"+monitor_no+"'";
+		String sql = "select * from t_monitor_data where monitor_no = '"+monitor_no+"'";
+		String orderSql = "";
+		String whereSql = "";
+		String limitSql = "";
+		
+		String search = getPara("search[value]");
+		if(StringUtils.isNotBlank(search)){
+			//DO Nothing
+		}
+		
+		int sortColumn = getParaToInt("order[0][column]");
+		String sortType = getPara("order[0][dir]");
+		switch (sortColumn) {
+		case 0:
+			orderSql = " order by refresh_time "+sortType;
+			break;
+		case 1:
+			orderSql = " order by purify_after "+sortType;
+			break;
+		case 2:
+			orderSql = " order by fan_status "+sortType;
+			break;
+		case 3:
+			orderSql = " order by purifier_status "+sortType;
+			break;
+		case 4:
+			orderSql = " order by monitor_status "+sortType;
+			break;
+		default:
+			break;
+		}
+		
+		int start = getParaToInt("start");
+		int length = getParaToInt("length");
+		if(length!=-1){
+			limitSql = " limit "+start+","+length;
+		}
+		Long recordsTotal = Db.queryLong(sumSql+whereSql);
+		List<MonitorData> lstmonitorData = new ArrayList<MonitorData>();
+		Object[] data = null;
+		if(recordsTotal!=0){
+			lstmonitorData = MonitorData.dao.find(sql+whereSql+orderSql+limitSql);
+			data = new Object[lstmonitorData.size()];
+			for(int i=0; i<lstmonitorData.size(); i++){
+				Object[] obj = new Object[5];
+				MonitorData monitor = lstmonitorData.get(i);
+				obj[0] = monitor.get("refresh_time");
+				obj[1] = monitor.get("purify_after");
+				obj[2] = monitor.get("fan_status");
+				obj[3] = monitor.get("purifier_status");
+				obj[4] = monitor.get("monitor_status");
 				data[i] = obj;
 			}
 		}
