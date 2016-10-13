@@ -45,8 +45,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     <body class=" login">
         <!-- BEGIN LOGO -->
         <div class="logo">
-            <a href="index.html">
-                <img src="${ctx}/assets/pages/img/logo-big.png" alt="" /> </a>
+            <a href="index.html" style="color:white;font-size:30px;text-decoration:none;">油烟在线监控系统 </a>
         </div>
         <!-- END LOGO -->
         <!-- BEGIN LOGIN -->
@@ -78,8 +77,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                 </div>
                 <div class="forget-password">
                     <h4>忘记了你的密码?</h4>
-                    <p> 别担心, 点击
-                        <a href="javascript:;" id="forget-password">这里</a>重新设置密码. </p>
+                    <p> 别担心, 点击这里重新设置密码. </p>
+                    <p style="display:none"> 别担心, 点击
+                        <a href="/login" id="forget-password">这里</a>重新设置密码. </p>
                 </div>
             </form>
             <!-- END LOGIN FORM -->
@@ -104,7 +104,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         </div>
         <!-- END LOGIN -->
         <!-- BEGIN COPYRIGHT -->
-        <div class="copyright"> 2016 &copy; Metronic - Admin Dashboard Template. </div>
+        <div class="copyright" style="display:none;"> 2016 &copy; Metronic - Admin Dashboard Template. </div>
         <!-- END COPYRIGHT -->
         <!--[if lt IE 9]>
 <script src="${ctx}/assets/global/plugins/respond.min.js"></script>
