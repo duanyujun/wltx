@@ -88,71 +88,71 @@
 		              </div>
 		              <div class="col-md-3"><label for="create_date"></label></div>
 		          </div>
-		          <div class="form-group">
+		          <div class="form-group" style="display:none;">
 		              <label class="col-md-3 control-label">净化前：</label>
 		              <div class="col-md-6">
 		                  <input type="text" class="form-control" id="purify_pre" name="purify_pre" maxlength="100" value="${monitor.attrs.purify_pre}" placeholder="请输入净化前">
 		              </div>
 		              <div class="col-md-3"><label for="purify_pre"></label></div>
 		          </div>
-		          <div class="form-group">
+		          <div class="form-group" style="display:none;">
 		              <label class="col-md-3 control-label">净化后：</label>
 		              <div class="col-md-6">
-		                  <input type="text" class="form-control" id="purify_after" name="purify_after" maxlength="100" required value="${monitor.attrs.purify_after}" placeholder="请输入净化后">
+		                  <input type="text" class="form-control" id="purify_after" name="purify_after" maxlength="100"  value="${monitor.attrs.purify_after}" placeholder="请输入净化后">
 		              </div>
 		              <div class="col-md-3"><label for="purify_after"></label></div>
 		          </div>
-		          <div class="form-group">
-		              <label class="col-md-3 control-label">净化率（%）：</label>
+		          <div class="form-group" style="display:none;">
+		              <label class="col-md-3 control-label" >净化率（%）：</label>
 		              <div class="col-md-6">
 		                  <input type="text" class="form-control" id="purify_rate" name="purify_rate" maxlength="100"  value="${monitor.attrs.purify_rate}" placeholder="请输入净化率">
 		              </div>
 		              <div class="col-md-3"><label for="purify_rate"></label></div>
 		          </div>
-		          <div class="form-group">
+		          <div class="form-group" style="display:none;">
 		              <label class="col-md-3 control-label">是否超标：</label>
 		              <div class="col-md-6">
-		                  <input type="text" class="form-control" id="is_overproof" name="is_overproof" maxlength="1" required value="${monitor.attrs.is_overproof}" placeholder="请输入是否超标">
+		                  <input type="text" class="form-control" id="is_overproof" name="is_overproof" maxlength="1"  value="${monitor.attrs.is_overproof}" placeholder="请输入是否超标">
 		              </div>
 		              <div class="col-md-3"><label for="is_overproof"></label></div>
 		          </div>
-		          <div class="form-group">
+		          <div class="form-group" style="display:none;">
 		              <label class="col-md-3 control-label">净化器状态：</label>
 		              <div class="col-md-6">
-		                  <input type="text" class="form-control" id="purifier_status" name="purifier_status" maxlength="1" required value="${monitor.attrs.purifier_status}" placeholder="请输入净化器状态">
+		                  <input type="text" class="form-control" id="purifier_status" name="purifier_status" maxlength="1"  value="${monitor.attrs.purifier_status}" placeholder="请输入净化器状态">
 		              </div>
 		              <div class="col-md-3"><label for="purifier_status"></label></div>
 		          </div>
-		          <div class="form-group">
+		          <div class="form-group" style="display:none;">
 		              <label class="col-md-3 control-label">风机状态：</label>
 		              <div class="col-md-6">
-		                  <input type="text" class="form-control" id="fan_status" name="fan_status" maxlength="1" required value="${monitor.attrs.fan_status}" placeholder="请输入风机状态">
+		                  <input type="text" class="form-control" id="fan_status" name="fan_status" maxlength="1"  value="${monitor.attrs.fan_status}" placeholder="请输入风机状态">
 		              </div>
 		              <div class="col-md-3"><label for="fan_status"></label></div>
 		          </div>
-		          <div class="form-group">
+		          <div class="form-group" style="display:none;">
 		              <label class="col-md-3 control-label">采集器状态：</label>
 		              <div class="col-md-6">
-		                  <input type="text" class="form-control" id="collect_status" name="collect_status" maxlength="1" required value="${monitor.attrs.collect_status}" placeholder="请输入采集器状态">
+		                  <input type="text" class="form-control" id="collect_status" name="collect_status" maxlength="1"  value="${monitor.attrs.collect_status}" placeholder="请输入采集器状态">
 		              </div>
 		              <div class="col-md-3"><label for="collect_status"></label></div>
 		          </div>
-		          <div class="form-group">
+		          <div class="form-group" style="display:none;">
 		              <label class="col-md-3 control-label">是否离线：</label>
 		              <div class="col-md-6">
-		                  <input type="text" class="form-control" id="is_online" name="is_online" maxlength="1" required value="${monitor.attrs.is_online}" placeholder="请输入是否离线">
+		                  <input type="text" class="form-control" id="is_online" name="is_online" maxlength="1"  value="${monitor.attrs.is_online}" placeholder="请输入是否离线">
 		              </div>
 		              <div class="col-md-3"><label for="is_online"></label></div>
 		          </div>
 		          
-		          <div class="form-group">
+		          <div class="form-group" style="display:none;">
 		              <label class="col-md-3 control-label">刷新时间：</label>
 		              <div class="col-md-6">
-		                  <input type="text" class="form-control" id="refresh_time" name="refresh_time" maxlength="100" required value="${monitor.attrs.refresh_time}" placeholder="请输入刷新时间">
+		                  <input type="text" class="form-control" id="refresh_time" name="refresh_time" maxlength="100"  value="${monitor.attrs.refresh_time}" placeholder="请输入刷新时间">
 		              </div>
 		              <div class="col-md-3"><label for="refresh_time"></label></div>
 		          </div>
-		          <div class="form-group">
+		          <div class="form-group" >
 			          <div class="col-md-offset-3 col-md-9">
 	                      <button type="button" class="btn green" onclick="save();">保 存</button>
 	                      <button type="button" class="btn default" onclick="cancel();" style="margin-left:10px;">取 消</button>

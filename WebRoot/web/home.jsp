@@ -115,7 +115,7 @@
         <!-- END CONTAINER -->
         <!-- BEGIN FOOTER -->
         <div class="page-footer">
-            <div class="page-footer-inner"> 2016 &copy; CZF Co.
+            <div class="page-footer-inner" style="display:none;"> 2016 &copy; CZF Co.
             </div>
             <div class="scroll-to-top">
                 <i class="icon-arrow-up"></i>
