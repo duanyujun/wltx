@@ -58,7 +58,7 @@ public class HomeController extends Controller {
 		}
 		
 		
-		setAttr("username", username);
+		//setAttr("username", username);
 		render("home.jsp");
 	}
 	
