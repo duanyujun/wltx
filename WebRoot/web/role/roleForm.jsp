@@ -42,7 +42,7 @@
 		              <div class="col-md-3"><label for="role_name_cn"></label></div>
 		          </div>
 		          <div class="form-group">
-		              <label class="col-md-3 control-label"><font color="red">*</font>权限：</label>
+		              <label class="col-md-3 control-label"><font color="red">*</font>分配权限：</label>
 		              <div class="col-md-6">
 		                  <a href="javascript:;" class="btn btn-sm default" data-reveal-id="myModal"> 编辑 
                                <i class="fa fa-edit"></i>
@@ -134,7 +134,6 @@ function save(){
 			function(result){
 				$('#main-content').load($('#urlHidden').val());
 				showToast(1, "保存成功！", "温馨提示");
-				
 			}
 		);
 	}
@@ -153,6 +152,14 @@ function saveTree(){
 	}
     $("#permissionids").val(ids);
     $('#myModal').trigger('reveal:close');
+    
+    $.ajax({ 
+		url: "/role/saveRolePermissions", 
+		data: {roleId: '${roles.attrs.id}', permissionids:ids},
+    	success: function(data){
+    		showToast(1, "分配权限成功！", "温馨提示");
+        }
+	});
 }
 
 function cancelTree(){

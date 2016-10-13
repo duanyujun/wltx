@@ -141,6 +141,27 @@ public class RoleController extends Controller {
 		renderJson(1);
 	}
 	
+	public void saveRolePermissions(){
+		String permissionIds = getPara("permissionids");
+		String roleId = getPara("roleId");
+		if(StringUtils.isNotBlank(roleId)){
+			if(StringUtils.isNotBlank(permissionIds)){
+				List<RolesPermissions> lstRP = new ArrayList<RolesPermissions>();
+				String[] permIds = permissionIds.split(",");
+				for(String id : permIds){
+					RolesPermissions rp = new RolesPermissions();
+					rp.set("role_id", roleId);
+					rp.set("permission_id", id);
+					lstRP.add(rp);
+				}
+				Db.update("delete from roles_permissions where role_id = ?",roleId);
+				Db.batchSave(lstRP, lstRP.size());
+			}
+		}
+		
+		renderJson(1);
+	}
+	
 	public void del(){
 		String ids = getPara("ids");
 		if(StringUtils.isNotBlank(ids)){

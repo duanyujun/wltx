@@ -131,7 +131,7 @@ public class UserController extends Controller {
 				setAttr("existRoleIds", sb.toString());
 			}
 		}
-		List<Roles> lstRoles = Roles.dao.find("select * from roles where role_name != 'admin'");
+		List<Roles> lstRoles = Roles.dao.find("select * from roles");
 		setAttr("lstRoles", lstRoles);
 		render("user/userForm.jsp");
 	}
@@ -174,7 +174,7 @@ public class UserController extends Controller {
 				lstUsersRoles.add(usersRoles);
 			}
 			if(lstUsersRoles.size()!=0){
-				Db.update("delete from user_roles where user_id = ?", Integer.valueOf(users.getInt("id")));
+				Db.update("delete from user_roles where user_id = ?", users.getStr("id"));
 				Db.batchSave(lstUsersRoles, lstUsersRoles.size());
 			}
 		}
