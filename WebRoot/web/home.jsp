@@ -43,8 +43,8 @@
         <div class="page-header navbar navbar-fixed-top">
             <div class="page-header-inner ">
                 <div class="page-logo">
-                    <a href="index.html">
-                        <img src="${ctx}/assets/layouts/layout4/img/logo-light.png" alt="logo" class="logo-default" /> </a>
+                    <a href="/home">
+                        <img src="${ctx}/assets/layouts/layout4/img/logo-word.jpg" alt="logo" class="logo-default" /> </a>
                     <div class="menu-toggler sidebar-toggler">
                     </div>
                 </div>
@@ -54,37 +54,17 @@
                         <ul class="nav navbar-nav pull-right">
                             <li class="dropdown dropdown-user dropdown-dark">
                                 <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                    <span class="username username-hide-on-mobile"> Nick </span>
-                                    <img alt="" class="img-circle" src="${ctx}/assets/layouts/layout4/img/avatar9.jpg" /> </a>
+                                    <span class="username username-hide-on-mobile">${username}</span>
+                                    <img alt="" class="img-circle" src="${ctx}/assets/layouts/layout4/img/head.png" /> </a>
                                 <ul class="dropdown-menu dropdown-menu-default">
+                                    
                                     <li>
-                                        <a href="page_user_profile_1.html">
-                                            <i class="icon-user"></i> My Profile </a>
+                                        <a href="/login">
+                                            <i class="icon-login"></i>重新登录</a>
                                     </li>
                                     <li>
-                                        <a href="app_calendar.html">
-                                            <i class="icon-calendar"></i> My Calendar </a>
-                                    </li>
-                                    <li>
-                                        <a href="app_inbox.html">
-                                            <i class="icon-envelope-open"></i> My Inbox
-                                            <span class="badge badge-danger"> 3 </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="app_todo_2.html">
-                                            <i class="icon-rocket"></i> My Tasks
-                                            <span class="badge badge-success"> 7 </span>
-                                        </a>
-                                    </li>
-                                    <li class="divider"> </li>
-                                    <li>
-                                        <a href="page_user_lock_1.html">
-                                            <i class="icon-lock"></i> Lock Screen </a>
-                                    </li>
-                                    <li>
-                                        <a href="page_user_login_1.html">
-                                            <i class="icon-key"></i> Log Out </a>
+                                        <a href="/logout">
+                                            <i class="icon-key"></i>退出系统</a>
                                     </li>
                                 </ul>
                             </li>
