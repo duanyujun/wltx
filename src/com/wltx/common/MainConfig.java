@@ -13,7 +13,7 @@ import com.jfinal.ext.plugin.shiro.ShiroPlugin;
 import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.druid.DruidPlugin;
-import com.jfinal.plugin.ehcache.EhCachePlugin;
+import com.jfinal.render.JspRender;
 import com.jfinal.render.ViewType;
 import com.wltx.controller.CityController;
 import com.wltx.controller.CompanyController;
@@ -46,6 +46,7 @@ public class MainConfig extends JFinalConfig {
 		me.setViewType(ViewType.JSP);
 		PropKit.use("config.properties");
 		me.setDevMode(false);
+		JspRender.setSupportActiveRecord(true);
 		
 		me.setErrorView(401, "/web/error.jsp");
 		me.setErrorView(403, "/web/error.jsp");

@@ -5,7 +5,7 @@
 <script src="${ctx}/assets/global/plugins/bootstrap-toastr/toastr.js" type="text/javascript"></script>
 <script src="${ctx}/assets/global/plugins/bootbox/bootbox.min.js" type="text/javascript"></script>
 
-<div class="portlet light bordered">
+<div class="portlet light bordered" id="mainDiv">
     <div class="portlet-body">
         
         <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
