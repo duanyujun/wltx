@@ -54,11 +54,10 @@ public class HomeController extends Controller {
 				groupMenuList.add(groupMenu);
 			}
 			
-			setAttr("groupMenuList", groupMenuList);
+			//setAttr("groupMenuList", groupMenuList);
+			getSession().setAttribute("groupMenuList", groupMenuList);
 		}
 		
-		
-		//setAttr("username", username);
 		render("home.jsp");
 	}
 	

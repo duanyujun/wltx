@@ -4,6 +4,7 @@
 <script src="${ctx}/assets/global/plugins/bootstrap-toastr/toastr.js" type="text/javascript"></script>
 <link href="${ctx}/assets/global/plugins/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet" type="text/css" />
 <script src="${ctx}/assets/global/plugins/bootstrap-select/js/bootstrap-select.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="${ctx}/assets/global/plugins/My97DatePicker/WdatePicker.js"></script>
 <style>
 .error{
 	color:red;
@@ -83,8 +84,11 @@
 		          </div>
 		          <div class="form-group">
 		              <label class="col-md-3 control-label"><font color="red">*</font>安装日期：</label>
-		              <div class="col-md-6">
-		                  <input type="text" class="form-control" id="create_date" name="create_date" maxlength="100" required value="${monitor.attrs.create_date}" placeholder="请输入安装日期">
+		              <div class="col-md-6" style="float:left;">
+		              	  <input id="create_date" name="create_date" type="text" maxlength="20" required class="form-control" onFocus="WdatePicker({el:'create_date'})" 
+		              	  value="<fmt:formatDate value="${monitor.attrs.create_date}" pattern="yyyy-MM-dd"/>"   placeholder="请输入安装日期" style="width:150px;float:left;" />
+		              	  <img onclick="WdatePicker({el:'create_date'})" src="assets/pages/img/cal_pick.png" align="middle"  style="cursor:pointer; margin-left:-4px;margin-top:-7px;float:left;">
+						  
 		              </div>
 		              <div class="col-md-3"><label for="create_date"></label></div>
 		          </div>

@@ -58,6 +58,18 @@ public class MonitorController extends Controller {
 		case 2:
 			orderSql = " order by company_name "+sortType;
 			break;
+		case 3:
+			orderSql = " order by monitor_no "+sortType;
+			break;
+		case 4:
+			orderSql = " order by create_date "+sortType;
+			break;
+		case 5:
+			orderSql = " order by longitude "+sortType;
+			break;
+		case 6:
+			orderSql = " order by latitude "+sortType;
+			break;
 		default:
 			break;
 		}
@@ -74,11 +86,15 @@ public class MonitorController extends Controller {
 			lstmonitor = Monitor.dao.find(sql+whereSql+orderSql+limitSql);
 			data = new Object[lstmonitor.size()];
 			for(int i=0; i<lstmonitor.size(); i++){
-				Object[] obj = new Object[5];
+				Object[] obj = new Object[7];
 				Monitor monitor = lstmonitor.get(i);
 				obj[0] = monitor.get("id");
 				obj[1] = monitor.get("name");
 				obj[2] = monitor.get("company_name");
+				obj[3] = monitor.get("monitor_no");
+				obj[4] = monitor.get("create_date");
+				obj[5] = monitor.get("longitude");
+				obj[6] = monitor.get("latitude");
 				data[i] = obj;
 			}
 		}

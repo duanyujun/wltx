@@ -88,8 +88,7 @@
 	                                <span class="arrow ${status.index==0?'open':''}"></span>
 	                            </a>
 	                            <ul class="sub-menu" >
-	                            	<c:set var="lstMenu" value="${groupMenu.lstMenu}" />
-	                            	<c:forEach items="${lstMenu}" var="menu" varStatus="s">
+	                            	<c:forEach items="${groupMenu.lstMenu}" var="menu" varStatus="s">
 	                                <li class="nav-item">
 	                                    <a href="${menu.attrs.pvalue}" class="nav-link ">
 	                                        <span class="title">${menu.attrs.name}</span>

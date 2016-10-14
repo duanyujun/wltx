@@ -9,12 +9,12 @@
     <div class="portlet-title">
         <div class="caption font-dark">
             <i class="icon-settings font-dark"></i>
-            <span class="caption-subject bold uppercase"> 权限管理 </span>
+            <span class="caption-subject bold uppercase">权限管理</span>
         </div>
         
     </div>
     <div class="portlet-body" >
-        <div class="table-toolbar" style="display:none;">
+        <div class="table-toolbar" >
             <div class="row">
                 <div class="col-md-6">
                     <div class="btn-group">
@@ -27,7 +27,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="btn-group pull-right">
+                    <div class="btn-group pull-right" style="display:none;">
                         <button class="btn green  btn-outline dropdown-toggle" data-toggle="dropdown">Tools
                             <i class="fa fa-angle-down"></i>
                         </button>
@@ -83,7 +83,15 @@ $(document).ready(function() {
                   "searchable": true,
                   "render": function ( data, type, full, meta ) {
                       return '<a href="" class="editClass" >'+data+'</a>';
-                    }}
+                    }},
+               {
+                   "targets": 2,
+                   "orderable": true,
+                   "searchable": false,
+                   "render": function ( data, type, full, meta ) {
+                	   var ptype = data==1?'菜单':'权限';
+                       return ptype;
+                     }}
         
         ],
         "order": [[1, 'asc']],
