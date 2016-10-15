@@ -75,7 +75,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                         <input type="checkbox" name="remember" value="1" /> 记住我 </label>
                     <button type="submit" class="btn green pull-right"> 登 录 </button>
                 </div>
-                <div class="forget-password">
+                <div class="forget-password" style="display:none;">
                     <h4>忘记了你的密码?</h4>
                     <p> 别担心, 点击这里重新设置密码. </p>
                     <p style="display:none"> 别担心, 点击

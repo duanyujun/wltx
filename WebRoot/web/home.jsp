@@ -42,7 +42,7 @@
 
     <body class="page-container-bg-solid page-header-fixed page-sidebar-closed-hide-logo page-md">
         <div class="page-header navbar navbar-fixed-top">
-            <div class="page-header-inner ">
+            <div class="page-header-inner" >
                 <div class="page-logo">
                     <a href="/home">
                         <img src="${ctx}/assets/layouts/layout4/img/logo-word.jpg" alt="logo" class="logo-default" /> </a>
@@ -50,7 +50,7 @@
                     </div>
                 </div>
                 <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse"> </a>
-                <div class="page-top">
+                <div class="page-top hidden-xs hidden-sm" >
                     <div class="top-menu">
                         <ul class="nav navbar-nav pull-right">
                             <li class="dropdown dropdown-user dropdown-dark">
